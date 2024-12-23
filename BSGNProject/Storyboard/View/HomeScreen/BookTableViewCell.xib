@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="142" id="KGk-i7-Jjw" customClass="BookTableViewCell" customModule="BSGNProject" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="142"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="142"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ai-PO-56O">
+                        <rect key="frame" x="15" y="100" width="137.66666666666666" height="42"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="filled" image="house.lodge" catalog="system" imagePadding="8">
+                            <backgroundConfiguration key="background" cornerRadius="20"/>
+                            <attributedString key="attributedTitle">
+                                <fragment content="Tìm hiệu thuốc">
+                                    <attributes>
+                                        <font key="NSFont" size="13" name="Helvetica"/>
+                                        <font key="NSOriginalFont" size="12" name="Helvetica"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
+                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="baseBackgroundColor" name="MajorColor"/>
+                        </buttonConfiguration>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mLo-rn-jSs">
+                        <rect key="frame" x="15" y="25" width="290" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="kHT-fe-dVw"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="filled" title="Khám ngay!">
+                            <backgroundConfiguration key="background" cornerRadius="20" image="BG" imageContentMode="scaleAspectFill"/>
+                            <color key="baseForegroundColor" systemColor="labelColor"/>
+                            <color key="baseBackgroundColor" name="MajorColor"/>
+                        </buttonConfiguration>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iWA-C4-AnO">
+                        <rect key="frame" x="167.66666666666663" y="100" width="137.33333333333337" height="42"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="filled" image="default_doctor" imagePadding="8">
+                            <backgroundConfiguration key="background" cornerRadius="20"/>
+                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="small"/>
+                            <attributedString key="attributedTitle">
+                                <fragment content="Tìm bác sỹ">
+                                    <attributes>
+                                        <font key="NSFont" size="13" name="Helvetica"/>
+                                        <font key="NSOriginalFont" size="12" name="Helvetica"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
+                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="baseBackgroundColor" name="MajorColor"/>
+                        </buttonConfiguration>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="mLo-rn-jSs" secondAttribute="trailing" constant="15" id="6NE-9L-gKw"/>
+                    <constraint firstItem="iWA-C4-AnO" firstAttribute="leading" secondItem="9Ai-PO-56O" secondAttribute="trailing" constant="15" id="7X0-9V-xdq"/>
+                    <constraint firstItem="iWA-C4-AnO" firstAttribute="width" secondItem="9Ai-PO-56O" secondAttribute="width" id="EP5-eK-JyJ"/>
+                    <constraint firstItem="mLo-rn-jSs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="HRN-Mn-L9c"/>
+                    <constraint firstItem="9Ai-PO-56O" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="IIs-7S-8Bz"/>
+                    <constraint firstItem="iWA-C4-AnO" firstAttribute="height" secondItem="mLo-rn-jSs" secondAttribute="height" multiplier="0.7" id="UYd-62-OPP"/>
+                    <constraint firstItem="9Ai-PO-56O" firstAttribute="top" secondItem="mLo-rn-jSs" secondAttribute="bottom" constant="15" id="VEK-5W-H7f"/>
+                    <constraint firstItem="mLo-rn-jSs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="jkv-hu-rt0"/>
+                    <constraint firstItem="9Ai-PO-56O" firstAttribute="height" secondItem="mLo-rn-jSs" secondAttribute="height" multiplier="0.7" id="mCw-o7-nzl"/>
+                    <constraint firstItem="iWA-C4-AnO" firstAttribute="top" secondItem="mLo-rn-jSs" secondAttribute="bottom" constant="15" id="niB-jJ-iVm"/>
+                    <constraint firstAttribute="trailing" secondItem="iWA-C4-AnO" secondAttribute="trailing" constant="15" id="o5I-g9-Z0E"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="bookingButton" destination="mLo-rn-jSs" id="2mq-7d-PCC"/>
+                <outlet property="findDoctorButton" destination="iWA-C4-AnO" id="B9f-mX-NV1"/>
+                <outlet property="pharmacyButton" destination="9Ai-PO-56O" id="TTS-Dt-Pin"/>
+            </connections>
+            <point key="canvasLocation" x="62.595419847328245" y="-64.788732394366207"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="BG" width="375" height="188"/>
+        <image name="default_doctor" width="32.333332061767578" height="32.333332061767578"/>
+        <image name="house.lodge" catalog="system" width="128" height="55"/>
+        <namedColor name="MajorColor">
+            <color red="0.17254901960784313" green="0.52549019607843139" blue="0.40392156862745099" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
