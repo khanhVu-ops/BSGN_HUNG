@@ -17,14 +17,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
-        
+        self.window = window
+
         guard let userId = Auth.auth().currentUser?.uid else {
             // Not Login
-            let firstVC = IntroViewController(nibName: "IntroViewController", bundle: nil)
-            let navController = BaseNavigationController(rootViewController: firstVC)
-            window.rootViewController = navController
-            self.window = window
-            window.makeKeyAndVisible()
+            toIntro()
             return
         }
         
@@ -50,6 +47,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                         self.window = window
                         window.makeKeyAndVisible()
                     } else {
+                        self.toIntro()
                         print("User data not found in either doctors or patients.")
                     }
                 }
@@ -85,6 +83,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
+    
+    func toIntro() {
+        do {
+            try Auth.auth().signOut()
+            let firstVC = IntroViewController(nibName: "IntroViewController", bundle: nil)
+            let navController = BaseNavigationController(rootViewController: firstVC)
+            window?.rootViewController = navController
+            window?.makeKeyAndVisible()
+        } catch {
+            
+        }
+    }
 
 }
 

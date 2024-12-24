@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class DoctorProfileViewController: UIViewController {
 
@@ -28,6 +29,19 @@ class DoctorProfileViewController: UIViewController {
         tableView.register(UINib(nibName: "ProfileItemCell", bundle: nil), forCellReuseIdentifier: "ProfileItemCell")
     }
 
+    private func signOut() {
+        do {
+            try Auth.auth().signOut()
+            print("User logged out successfully.")
+            
+            // Điều hướng về màn hình đăng nhập
+            let introViewController = IntroViewController()
+            navigationController?.viewControllers = [introViewController]
+            
+        } catch let signOutError as NSError {
+            print("Error signing out: \(signOutError.localizedDescription)")
+        }
+    }
 }
 
 extension DoctorProfileViewController: UITableViewDataSource, UITableViewDelegate {
@@ -50,6 +64,15 @@ extension DoctorProfileViewController: UITableViewDataSource, UITableViewDelegat
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileItemCell", for: indexPath) as! ProfileItemCell
             cell.bind(section.items[indexPath.row])
             return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let section = sections[indexPath.section]
+        switch section.items[indexPath.row] {
+        case .signOut:
+            signOut()
+        default: break
         }
     }
     

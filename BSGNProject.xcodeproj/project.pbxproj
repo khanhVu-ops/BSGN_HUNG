@@ -855,7 +855,6 @@
 		2C888DD52C6B03F400AA19D2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				336CFABD2D19D4A5004487E6 /* New Group */,
 				336CFAA52D19B8F8004487E6 /* Base */,
 				2C358B632C7841DE00336C93 /* informationController */,
 				2C358B552C782F1C00336C93 /* DetailController */,
@@ -967,13 +966,6 @@
 				336CFAB72D19BA3A004487E6 /* CommonAlertViewController.xib */,
 			);
 			path = CommonAlert;
-			sourceTree = "<group>";
-		};
-		336CFABD2D19D4A5004487E6 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		337FF7F62D19EB3C0069A385 /* Cell */ = {
