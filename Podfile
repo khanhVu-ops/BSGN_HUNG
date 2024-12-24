@@ -27,6 +27,7 @@ pod 'Alamofire', '5.7.1'
 pod 'SnapKit', '5.6.0'
 pod "ToastViewSwift", '2.1.2'
 pod 'ProgressHUD', '14.1.1'
+pod 'IQKeyboardManagerSwift', '7.1.1'
 
 end
 #post_install do |installer|

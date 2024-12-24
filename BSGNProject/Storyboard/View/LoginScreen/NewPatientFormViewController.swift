@@ -55,6 +55,7 @@ class NewPatientFormViewController: UIViewController, UITableViewDelegate, UITab
         cell.delegate = self
         return cell
     }
+    
     func didTapDoneButton(with data: [String: Any]) {
         userData.merge(data) { _, new in new }
         print("Updated userInfo: \(userData)")

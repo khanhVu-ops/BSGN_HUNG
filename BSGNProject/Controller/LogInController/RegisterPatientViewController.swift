@@ -15,6 +15,7 @@ class RegisterPatientViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet private weak var continueButton: UIButton!
     @IBOutlet private weak var phoneView: UIView!
     @IBOutlet private weak var phoneTextField: UITextField!
+    @IBOutlet weak var eyeButton: UIButton!
     
     private var kindOfAccount: KindOfAccount?
     override func viewDidLoad() {
@@ -101,6 +102,12 @@ class RegisterPatientViewController: UIViewController, UITextFieldDelegate {
     func setKindOfAccountToDoctorLogin() {
         kindOfAccount = .doctorLogin
     }
+    
+    @IBAction func eyeTapped(_ sender: Any) {
+        passwordTextField.isSecureTextEntry.toggle()
+        eyeButton.setImage(UIImage(systemName: passwordTextField.isSecureTextEntry ? "eye.slash" : "eye"), for: .normal)
+    }
+    
     @IBAction func didTapContinue(_ sender: Any) {
         if kindOfAccount == .patientRegister {
             guard let email = phoneTextField.text, !email.isEmpty,

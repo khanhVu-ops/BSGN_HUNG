@@ -10,6 +10,7 @@ import Firebase
 import UserNotificationsUI
 import GoogleMaps
 import GooglePlaces
+import IQKeyboardManagerSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -25,10 +26,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         GMSServices.provideAPIKey("AIzaSyDaC5exHhkXgpuD1SHnUiREDViWUHCFf2I")
         GMSPlacesClient.provideAPIKey("AIzaSyDaC5exHhkXgpuD1SHnUiREDViWUHCFf2I")
         
-        
+        configIQKeyboard()
         return true
       }
 
+    private func configIQKeyboard() {
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.enableAutoToolbar = true
+        let doneBtn = IQBarButtonItemConfiguration(title: "Done")
+        IQKeyboardManager.shared.toolbarConfiguration.doneBarButtonConfiguration = doneBtn
+        IQKeyboardManager.shared.resignOnTouchOutside = true
+//        IQKeyboardManager.shared.keyboardDistanceFromTextField = 0
+
+    }
+    
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {

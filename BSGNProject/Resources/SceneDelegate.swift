@@ -42,7 +42,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     if snapshot.exists() {
                         let vc = TabbarController()
                         let navController = BaseNavigationController(rootViewController: vc)
-//                        navController.setNavigationBarHidden(true, animated: false)
+                        navController.setNavigationBarHidden(true, animated: false)
                         window.rootViewController = navController
                         self.window = window
                         window.makeKeyAndVisible()

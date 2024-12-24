@@ -28,6 +28,10 @@ class NewDoctorFormTableViewCell: UITableViewCell, SummaryMethod, UIPickerViewDe
         "Tim mạch", "Da liễu", "Thần kinh", "Nhi khoa", "Chỉnh hình",
         "Nhãn khoa", "Tiêu hóa", "Hô hấp", "Sản khoa", "Nội tiết"
     ]
+    
+    private let degree: [String] = ["Đại học", "Cao đẳng", "Không có"]
+    private let degreePicker = UIPickerView()
+
     override func awakeFromNib() {
         super.awakeFromNib()
         [nameTextField, lastNameTextField, dobTextField, phoneNumberTextField,
@@ -37,6 +41,8 @@ class NewDoctorFormTableViewCell: UITableViewCell, SummaryMethod, UIPickerViewDe
         }
         
         validateFields()
+        setupDegreePicker()
+        setupDatePicker()
         setupPickerView()
     }
     
@@ -62,6 +68,7 @@ class NewDoctorFormTableViewCell: UITableViewCell, SummaryMethod, UIPickerViewDe
     func addTargettoDoneButton(selector: Selector) {
         doneButton.addTarget(self, action: selector, for: .touchUpInside)
     }
+    
     @IBAction func doneButtonTapped(_ sender: UIButton) {
         let data: [String: Any] = [
             "firstName": nameTextField.text ?? "",
@@ -79,9 +86,11 @@ class NewDoctorFormTableViewCell: UITableViewCell, SummaryMethod, UIPickerViewDe
         ]
         delegate?.didTapDoneButton(with: data)
     }
+    
     @objc private func textFieldDidChange(_ textField: UITextField) {
         validateFields()
     }
+    
     private func setupPickerView() {
         pickerView.delegate = self
         pickerView.dataSource = self
@@ -98,8 +107,55 @@ class NewDoctorFormTableViewCell: UITableViewCell, SummaryMethod, UIPickerViewDe
         majorTextField.inputAccessoryView = toolbar
     }
     
+    private func setupDegreePicker() {
+        // Cấu hình picker cho bloodTextField
+        degreePicker.delegate = self
+        degreePicker.dataSource = self
+        degreeTextField.inputView = degreePicker
+        degreeTextField.inputAccessoryView = createToolbar(action: #selector(didSelectDegree))
+    }
+    
     @objc private func dismissPicker() {
         majorTextField.resignFirstResponder()
+    }
+    
+    private func setupDatePicker() {
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+        datePicker.preferredDatePickerStyle = .wheels
+        datePicker.maximumDate = Date() // Ngày tối đa là ngày hiện tại
+        datePicker.addTarget(self, action: #selector(didChangeDatePicker), for: .valueChanged)
+        
+        dobTextField.inputView = datePicker // Gắn datePicker làm input view
+        dobTextField.inputAccessoryView = createToolbar(action: #selector(dismissKeyboard)) // Thêm thanh toolbar để đóng Date Picker
+    }
+
+    @objc private func didChangeDatePicker(sender: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy" // Định dạng ngày tháng năm
+        dobTextField.text = dateFormatter.string(from: sender.date)
+        validateFields()
+    }
+    
+    private func createToolbar(action: Selector) -> UIToolbar {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: action)
+        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolbar.setItems([space, doneButton], animated: true)
+        
+        return toolbar
+    }
+    
+    @objc private func didSelectDegree() {
+        let selectedRow = degreePicker.selectedRow(inComponent: 0)
+        degreeTextField.text = degree[selectedRow]
+        degreeTextField.resignFirstResponder()
+    }
+    
+    @objc private func dismissKeyboard() {
+        dobTextField.resignFirstResponder()
     }
     
     // MARK: - UIPickerViewDataSource
@@ -108,17 +164,33 @@ class NewDoctorFormTableViewCell: UITableViewCell, SummaryMethod, UIPickerViewDe
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return majorData.count // Số hàng = số phần tử trong majorData
+        if pickerView == self.pickerView {
+            return majorData.count // Số hàng = số phần tử trong majorData
+        }
+        
+        if pickerView == self.degreePicker {
+            return degree.count
+        }
+        return 1
     }
     
     // MARK: - UIPickerViewDelegate
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return majorData[row] // Hiển thị tên chuyên ngành
+        if pickerView == self.pickerView {
+            return majorData[row] // Hiển thị tên chuyên ngành
+        }
+        
+        if pickerView == self.degreePicker {
+            return degree[row]
+        }
+        return "No data!"
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        majorTextField.text = majorData[row] // Cập nhật text của majorTextField
-        majorID = row + 1
+        if pickerView == self.pickerView {
+            majorTextField.text = majorData[row] // Cập nhật text của majorTextField
+            majorID = row + 1
+        }
     }
     
 }

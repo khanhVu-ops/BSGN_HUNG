@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseAuth
 
-class MoreTabTableViewCell: UITableViewCell, SummaryMethod {
+class MoreTabTableViewCell: BaseTableViewCell, SummaryMethod {
 
     @IBOutlet private weak var logOutButton: UIButton!
     @IBOutlet private weak var policyButton: UIButton!

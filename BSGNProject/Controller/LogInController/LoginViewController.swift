@@ -18,6 +18,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet private var hotlineButton: UIButton!
     @IBOutlet private var translateButton: UIButton!
     @IBOutlet private var continueLoginButton: UIButton!
+    @IBOutlet weak var eyeButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar(with: "", with: false)
@@ -100,6 +102,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
 
  
+    @IBAction func eyeTapped(_ sender: Any) {
+        passWordTextField.isSecureTextEntry.toggle()
+        eyeButton.setImage(UIImage(systemName: passWordTextField.isSecureTextEntry ? "eye.slash" : "eye"), for: .normal)
+    }
+    
     @IBAction func buttonTapped() {
         continueLoginButton.layer.opacity = 0.3
         continueLoginButton.isEnabled = false
@@ -142,7 +149,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         if snapshot.exists() {
                             self.fetchPatientAttributes(userId: userId)
                             let VC = TabbarController()
-                            VC.navigationController?.navigationBar.isHidden = true
+                            self.navigationController?.setNavigationBarHidden(true, animated: false)
                             self.navigationController?.viewControllers = [VC]
                         } else {
                             print("User data not found in either doctors or patients.")

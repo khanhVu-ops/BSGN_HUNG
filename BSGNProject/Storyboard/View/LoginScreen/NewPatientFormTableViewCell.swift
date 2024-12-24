@@ -24,13 +24,32 @@ class NewPatientFormTableViewCell: BaseTableViewCell, SummaryMethod {
     
     weak var delegate: NewPatientFormCellDelegate?
     
-    
+    let bloodTypes = ["A", "B", "AB", "O"]
+    private let bloodTypePicker = UIPickerView()
+
     override func awakeFromNib() {
         super.awakeFromNib()
+        setupDatePicker()
+        setupBloodTypePicker()
+
+        
         [lastNameTextField, firstNameTextField, dobTextField, phoneNumberTextField, addressTextField, provinceTextField, districtTextField, xaTextField, idenTextField, bloodTextField].forEach { textField in
             textField?.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         }
         validateFields()
+    }
+    
+    func fillData(_ userData: [String: Any]) {
+        firstNameTextField.text = userData["name"] as? String
+        lastNameTextField.text = userData["lastName"] as? String
+        phoneNumberTextField.text = userData["phoneNumber"] as? String
+        addressTextField.text = userData["address"] as? String
+        provinceTextField.text = userData["province"] as? String
+        districtTextField.text = userData["district"] as? String
+        xaTextField.text = userData["xa"] as? String
+        dobTextField.text = userData["dateOfBirth"] as? String
+        idenTextField.text = userData["identifyNumber"] as? String
+
     }
     
     func validateFields() {
@@ -50,8 +69,56 @@ class NewPatientFormTableViewCell: BaseTableViewCell, SummaryMethod {
         doneButton.isEnabled = allFieldsValid
         doneButton.alpha = allFieldsValid ? 1 : 0.5
     }
+    
+    private func setupBloodTypePicker() {
+        // Cấu hình picker cho bloodTextField
+        bloodTypePicker.delegate = self
+        bloodTypePicker.dataSource = self
+        bloodTextField.inputView = bloodTypePicker
+        bloodTextField.inputAccessoryView = createToolbar(action: #selector(didSelectBloodType))
+    }
+    
+    private func setupDatePicker() {
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+        datePicker.preferredDatePickerStyle = .wheels
+        datePicker.maximumDate = Date() // Ngày tối đa là ngày hiện tại
+        datePicker.addTarget(self, action: #selector(didChangeDatePicker), for: .valueChanged)
+        
+        dobTextField.inputView = datePicker // Gắn datePicker làm input view
+        dobTextField.inputAccessoryView = createToolbar(action: #selector(dismissKeyboard)) // Thêm thanh toolbar để đóng Date Picker
+    }
+
+    @objc private func didChangeDatePicker(sender: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy" // Định dạng ngày tháng năm
+        dobTextField.text = dateFormatter.string(from: sender.date)
+        validateFields()
+    }
+    
+    private func createToolbar(action: Selector) -> UIToolbar {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: action)
+        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolbar.setItems([space, doneButton], animated: true)
+        
+        return toolbar
+    }
+    
     @objc private func textFieldDidChange() {
         validateFields()
+    }
+    
+    @objc private func didSelectBloodType() {
+        let selectedRow = bloodTypePicker.selectedRow(inComponent: 0)
+        bloodTextField.text = bloodTypes[selectedRow]
+        bloodTextField.resignFirstResponder()
+    }
+    
+    @objc private func dismissKeyboard() {
+        dobTextField.resignFirstResponder()
     }
     
     @IBAction func doneButtonTapped(_ sender: UIButton) {
@@ -74,4 +141,24 @@ class NewPatientFormTableViewCell: BaseTableViewCell, SummaryMethod {
 }
 protocol NewPatientFormCellDelegate: AnyObject {
     func didTapDoneButton(with data: [String: Any])
+}
+
+extension NewPatientFormTableViewCell: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if pickerView == bloodTypePicker {
+            return bloodTypes.count
+        }
+        return 0
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if pickerView == bloodTypePicker {
+            return bloodTypes[row]
+        }
+        return nil
+    }
 }

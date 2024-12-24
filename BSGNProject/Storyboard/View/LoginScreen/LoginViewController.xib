@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -15,6 +15,7 @@
                 <outlet property="continueLoginButton" destination="ALG-i2-uQd" id="jFK-nI-skw"/>
                 <outlet property="emailTextField" destination="epB-ya-cJi" id="9Jv-NE-EOk"/>
                 <outlet property="emailView" destination="NSW-sV-x3K" id="HrB-Js-bbT"/>
+                <outlet property="eyeButton" destination="n3q-JW-bly" id="9YS-tQ-Dg3"/>
                 <outlet property="hotlineButton" destination="DK3-5j-kIk" id="bVS-GD-QDL"/>
                 <outlet property="introImageView" destination="Cbh-EE-OWK" id="pTe-1x-ia1"/>
                 <outlet property="passWordTextField" destination="Eye-oT-LdD" id="wOR-Kq-Cio"/>
@@ -72,7 +73,7 @@
                     <rect key="frame" x="24" y="235.66666666666663" width="342" height="56"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nhập email của bạn" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="epB-ya-cJi">
-                            <rect key="frame" x="24" y="18.666666666666686" width="308" height="18.666666666666671"/>
+                            <rect key="frame" x="24" y="0.0" width="308" height="56"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
@@ -82,22 +83,41 @@
                         <constraint firstItem="epB-ya-cJi" firstAttribute="leading" secondItem="NSW-sV-x3K" secondAttribute="leading" constant="24" id="V1c-8C-q8f"/>
                         <constraint firstAttribute="height" constant="56" id="ebW-TN-kR3"/>
                         <constraint firstItem="epB-ya-cJi" firstAttribute="centerY" secondItem="NSW-sV-x3K" secondAttribute="centerY" id="j3m-o3-laI"/>
+                        <constraint firstItem="epB-ya-cJi" firstAttribute="top" secondItem="NSW-sV-x3K" secondAttribute="top" id="lec-CI-PgR"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MKU-Y7-VWB">
                     <rect key="frame" x="24" y="311.66666666666669" width="342" height="56"/>
                     <subviews>
-                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nhập email của bạn" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eye-oT-LdD">
-                            <rect key="frame" x="24" y="18.666666666666629" width="308" height="18.666666666666671"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
+                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GJ9-76-Gpm">
+                            <rect key="frame" x="24" y="0.0" width="303" height="56"/>
+                            <subviews>
+                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nhập mật khẩu của bạn" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eye-oT-LdD">
+                                    <rect key="frame" x="0.0" y="0.0" width="263" height="56"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                </textField>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n3q-JW-bly">
+                                    <rect key="frame" x="263" y="0.0" width="40" height="56"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="40" id="n6U-HJ-mAy"/>
+                                    </constraints>
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" image="eye.slash" catalog="system"/>
+                                    <connections>
+                                        <action selector="eyeTapped:" destination="-1" eventType="touchUpInside" id="dyc-bk-NrE"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="Eye-oT-LdD" firstAttribute="centerY" secondItem="MKU-Y7-VWB" secondAttribute="centerY" id="Z4Y-cB-Mn8"/>
-                        <constraint firstItem="Eye-oT-LdD" firstAttribute="leading" secondItem="MKU-Y7-VWB" secondAttribute="leading" constant="24" id="lTd-nb-aCb"/>
-                        <constraint firstAttribute="trailing" secondItem="Eye-oT-LdD" secondAttribute="trailing" constant="10" id="q9S-DI-SxR"/>
+                        <constraint firstAttribute="bottom" secondItem="GJ9-76-Gpm" secondAttribute="bottom" id="Vkq-3g-5Nn"/>
+                        <constraint firstItem="GJ9-76-Gpm" firstAttribute="top" secondItem="MKU-Y7-VWB" secondAttribute="top" id="ajk-Z8-h7s"/>
+                        <constraint firstAttribute="trailing" secondItem="GJ9-76-Gpm" secondAttribute="trailing" constant="15" id="jy4-D0-YlU"/>
                         <constraint firstAttribute="height" constant="56" id="qgb-TC-Nl0"/>
+                        <constraint firstItem="GJ9-76-Gpm" firstAttribute="leading" secondItem="MKU-Y7-VWB" secondAttribute="leading" constant="24" id="yIO-Zg-rrM"/>
                     </constraints>
                 </view>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Đăng nhập thất bại, vui lòng thử lại!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OwC-0d-CpA">
@@ -132,6 +152,7 @@
     </objects>
     <resources>
         <image name="BG" width="375" height="188"/>
+        <image name="eye.slash" catalog="system" width="128" height="95"/>
         <image name="phone" catalog="system" width="128" height="115"/>
         <namedColor name="MajorColor">
             <color red="0.17254901960784313" green="0.52549019607843139" blue="0.40392156862745099" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

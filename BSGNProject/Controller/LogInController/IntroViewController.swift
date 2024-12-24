@@ -46,6 +46,12 @@ class IntroViewController: UIViewController, UICollectionViewDelegate, UICollect
             introPageControl.topAnchor.constraint(equalTo: view.topAnchor, constant: (UIScreen.main.bounds.size.width + 156 + 20))
         ])
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         introPages.count
     }

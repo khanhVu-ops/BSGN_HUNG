@@ -40,6 +40,17 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         setupUI()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
     private func setupUI() {
         homeTableView.delegate = self
         homeTableView.dataSource = self
@@ -156,9 +167,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     @IBAction func didTapInfo(_ sender: Any) {
-        let newVC = InformationViewController(nibName: "InformationViewController", bundle: nil)
+        let newVC = NewPatientFormViewController(nibName: "NewPatientFormViewController", bundle: nil)
         self.navigationController?.pushViewController(newVC, animated: true)
-        newVC.tabBarController?.tabBar.isHidden = true
         newVC.setupNavigationBar(with: "Thông tin cá nhân", with: false)
     }
     func upadteAvatar() {
