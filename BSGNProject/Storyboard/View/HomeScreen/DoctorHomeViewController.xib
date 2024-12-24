@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="lgP-n3-iGf">
-                    <rect key="frame" x="20" y="0.0" width="353" height="852"/>
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Frame 45647" translatesAutoresizingMaskIntoConstraints="NO" id="8M3-lK-veG">
@@ -36,11 +36,11 @@
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="lgP-n3-iGf" secondAttribute="bottom" id="D21-Uw-9vR"/>
                 <constraint firstItem="lgP-n3-iGf" firstAttribute="top" secondItem="8M3-lK-veG" secondAttribute="bottom" id="HSP-oR-xpS"/>
-                <constraint firstItem="lgP-n3-iGf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Ncg-kL-9FH"/>
+                <constraint firstItem="lgP-n3-iGf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Ncg-kL-9FH"/>
                 <constraint firstItem="8M3-lK-veG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="brG-Wm-sW3"/>
                 <constraint firstItem="8M3-lK-veG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="fJK-2k-oZ6"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="8M3-lK-veG" secondAttribute="trailing" id="v33-f4-7xi"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="lgP-n3-iGf" secondAttribute="trailing" constant="20" id="xaJ-sH-bYk"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="lgP-n3-iGf" secondAttribute="trailing" id="xaJ-sH-bYk"/>
             </constraints>
             <point key="canvasLocation" x="61.832061068702288" y="-39.436619718309863"/>
         </view>

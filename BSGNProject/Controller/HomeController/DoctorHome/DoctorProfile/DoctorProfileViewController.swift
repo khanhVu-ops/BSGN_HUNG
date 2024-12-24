@@ -93,7 +93,7 @@ extension DoctorProfileViewController: UITableViewDataSource, UITableViewDelegat
         }
         let headerView = CommonHeaderView(frame: .init(x: 0, y: 0, width: screenWidth, height: 30))
         headerView.bind(icon: nil, title: sectionItem.headerTitle, titleFont: .systemFont(ofSize:13, weight: .semibold), titleColor: .black.withAlphaComponent(0.7))
-        headerView.layout(top: 0, leading: 0, trailing: 0, bottom: 0, iconSize: 14)
+        headerView.layout(top: 0, leading: 0, trailing: 0, bottom: 0)
         return headerView
     }
     

@@ -12,7 +12,6 @@ enum DoctorHomeCellType: CaseIterable {
 
     case doctorHome
     case doctorHomeAction
-    case none
     case doctorArticle
 
     static func returnValueFromInt(value: Int) -> DoctorHomeCellType {
@@ -36,13 +35,52 @@ class DoctorHomeViewController: UIViewController, UITableViewDataSource, UITable
         return picker
     }()
 
+    let customArticle : [Article] = [
+        Article(
+            id: 824,
+            category_id: 1,
+            title: "10 Tips for a Healthier Lifestyle",
+            slug: "social-media-impact",
+            picture: "BG",
+            picture_caption: "In-depth look",
+            created_at: "2024-04-14 07:05:10",
+            category_name: "Technology",
+            link: "https://example.com/2",
+            detail: "A guide to achieving a healthier lifestyle through simple daily habits."
+        ),
+        Article(
+            id: 750,
+            category_id: 1,
+            title: "The Future of AI in Healthcare",
+            slug: "ai-healthcare",
+            picture: "BG",
+            picture_caption: "Exploring the topic",
+            created_at: "2024-07-16 07:05:10",
+            category_name: "Technology",
+            link: "https://example.com/1",
+            detail: "A guide to achieving a healthier lifestyle through simple daily habits."
+        ),
+        Article(
+            id: 468,
+            category_id: 4,
+            title: "10 Tips for a Healthier Lifestyle",
+            slug: "quantum-computing",
+            picture: "BG",
+            picture_caption: "A new perspective",
+            created_at: "2024-06-16 07:05:10",
+            category_name: "Lifestyle",
+            link: "https://example.com/5",
+            detail: "A guide to achieving a healthier lifestyle through simple daily habits."
+        )
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         doctorHomeTableView.delegate = self
         doctorHomeTableView.dataSource = self
         doctorHomeTableView.registerNib(cellType: DoctorHomeTableViewCell.self)
         doctorHomeTableView.registerNib(cellType: DoctorHomeActionTableViewCell.self)
-        doctorHomeTableView.registerNib(cellType: DoctorArticleTableViewCell.self)
+        doctorHomeTableView.registerNib(cellType: ReuseArticleTableViewCell.self)
         doctorHomeTableView.backgroundColor = .clear
         setupUI()
         fetchDoctorProfile()
@@ -91,12 +129,20 @@ class DoctorHomeViewController: UIViewController, UITableViewDataSource, UITable
             self.view.layer.contentsGravity = .resizeAspectFill
         }
     }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        DoctorHomeCellType.allCases.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DoctorHomeCellType.allCases.count
+        switch DoctorHomeCellType.allCases[section] {
+        case .doctorHome, .doctorHomeAction: 1
+        default: customArticle.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch DoctorHomeCellType.returnValueFromInt(value: indexPath.row) {
+        switch DoctorHomeCellType.returnValueFromInt(value: indexPath.section) {
         case .doctorHome:
             let cell = doctorHomeTableView.dequeue(cellType: DoctorHomeTableViewCell.self, for: indexPath)
             cell.parentViewController = self
@@ -113,34 +159,29 @@ class DoctorHomeViewController: UIViewController, UITableViewDataSource, UITable
             cell.addBookedButtonTarget(target: self, action: #selector(bookedButtonTapped))
             cell.addAccountButtonTarget(target: self, action: #selector(accountButtonTapped))
             cell.addBoodedHistoryButtonTarget(target: self, action: #selector(hisotryTapped))
+            cell.addBalanceButtonTarget(target: self, action: #selector(balanceButtonTapped))
             cell.layer.cornerRadius = 15
             cell.clipsToBounds = true
             return cell
         case .doctorArticle:
-            let cell = doctorHomeTableView.dequeue(cellType: DoctorArticleTableViewCell.self, for: indexPath)
+            let cell = doctorHomeTableView.dequeue(cellType: ReuseArticleTableViewCell.self, for: indexPath)
             cell.backgroundColor = .clear
-            return cell
-        case .none:
-            let cell = UITableViewCell()
-            cell.backgroundColor = .clear
-            let view = UIView()
-            view.backgroundColor = .clear
+            cell.configure(with: customArticle[indexPath.row])
             return cell
         }
         
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch DoctorHomeCellType.returnValueFromInt(value: indexPath.row) {
-        case .doctorHome:
-            return 250
-        case .doctorHomeAction:
-            return view.bounds.height / 5
-        case .doctorArticle:
-            return 700
-        case .none:
-            return 10
-        }
+//        switch DoctorHomeCellType.returnValueFromInt(value: indexPath.row) {
+//        case .doctorHome:
+//            return 250
+//        case .doctorHomeAction:
+//            return view.bounds.height / 5
+//        case .doctorArticle:
+//            return 700
+//        }
+        UITableView.automaticDimension
     }
     
     @objc private func accountButtonTapped() {
@@ -171,9 +212,10 @@ class DoctorHomeViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     @objc private func balanceButtonTapped() {
-        
+        let vc = BalanceViewController()
+        navigationController?.pushViewController(vc, animated: true)
+        vc.setupNavigationBar(with: "Số dư", with: false)
     }
-    
 }
 
 

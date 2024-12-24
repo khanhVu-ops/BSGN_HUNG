@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -20,143 +20,143 @@
                 <rect key="frame" x="0.0" y="0.0" width="393" height="219"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="ogy-gd-orW">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="60"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="ftY-QV-nnt">
+                        <rect key="frame" x="20" y="0.0" width="353" height="160"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pXT-ns-D2Z">
-                                <rect key="frame" x="0.0" y="0.0" width="74.333333333333329" height="60"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="HtZ-Tr-CWj">
+                                <rect key="frame" x="0.0" y="0.0" width="353" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pXT-ns-D2Z">
+                                        <rect key="frame" x="0.0" y="0.0" width="80.666666666666671" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="hAD-op-j1C"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" imagePlacement="top">
+                                            <imageReference key="image" image="person.fill" catalog="system" symbolScale="large"/>
+                                            <backgroundConfiguration key="background" cornerRadius="20"/>
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Tài khoản">
+                                                    <attributes>
+                                                        <font key="NSFont" size="11" name="Helvetica"/>
+                                                        <font key="NSOriginalFont" size="12" name="Helvetica"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CX0-OA-E1S">
+                                        <rect key="frame" x="90.666666666666686" y="0.0" width="81" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="Npd-TF-AXH"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" imagePlacement="top">
+                                            <imageReference key="image" image="calendar" catalog="system" symbolScale="large"/>
+                                            <backgroundConfiguration key="background" cornerRadius="20"/>
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Lịch hẹn">
+                                                    <attributes>
+                                                        <font key="NSFont" size="11" name="Helvetica"/>
+                                                        <font key="NSOriginalFont" size="12" name="Helvetica"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bSx-5b-cko">
+                                        <rect key="frame" x="181.66666666666666" y="0.0" width="80.666666666666657" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="VWr-ZY-1v6"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" imagePlacement="top">
+                                            <imageReference key="image" image="clock.arrow.circlepath" catalog="system" symbolScale="large"/>
+                                            <backgroundConfiguration key="background" cornerRadius="20"/>
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Lịch sử">
+                                                    <attributes>
+                                                        <font key="NSFont" size="11" name="Helvetica"/>
+                                                        <font key="NSOriginalFont" size="12" name="Helvetica"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JVb-gg-uFh">
+                                        <rect key="frame" x="272.33333333333331" y="0.0" width="80.666666666666686" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="hVh-Sh-337"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" imagePlacement="top">
+                                            <imageReference key="image" image="wallet.pass" catalog="system" symbolScale="large"/>
+                                            <backgroundConfiguration key="background" cornerRadius="20"/>
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Số dư">
+                                                    <attributes>
+                                                        <font key="NSFont" size="11" name="Helvetica"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qlY-HV-9w5">
+                                <rect key="frame" x="0.0" y="63" width="353" height="1"/>
+                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="hAD-op-j1C"/>
+                                    <constraint firstAttribute="height" constant="1" id="8S4-sz-q5O"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MPs-mC-ymB">
+                                <rect key="frame" x="0.0" y="67" width="353" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="TL0-1a-4rr"/>
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" imagePlacement="top">
-                                    <imageReference key="image" image="person" catalog="system" symbolScale="large"/>
-                                    <backgroundConfiguration key="background" cornerRadius="20"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Trung tâm hỗ trợ"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gsa-yO-Z33">
+                                <rect key="frame" x="0.0" y="120" width="353" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="zfq-bL-Rdm"/>
+                                </constraints>
+                                <color key="tintColor" name="MajorColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <backgroundConfiguration key="background" cornerRadius="20">
+                                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                    </backgroundConfiguration>
                                     <attributedString key="attributedTitle">
-                                        <fragment content="Tài khoản">
+                                        <fragment content="Hotline 1900 9000">
                                             <attributes>
-                                                <font key="NSFont" size="11" name="Helvetica"/>
+                                                <font key="NSFont" size="20" name="Avenir-Heavy"/>
                                                 <font key="NSOriginalFont" size="12" name="Helvetica"/>
                                             </attributes>
                                         </fragment>
                                     </attributedString>
-                                    <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CX0-OA-E1S">
-                                <rect key="frame" x="106.33333333333334" y="0.0" width="74.333333333333343" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="Npd-TF-AXH"/>
-                                </constraints>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" imagePlacement="top">
-                                    <imageReference key="image" image="calendar.and.person" catalog="system" symbolScale="large"/>
-                                    <backgroundConfiguration key="background" cornerRadius="20"/>
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Lịch hẹn">
-                                            <attributes>
-                                                <font key="NSFont" size="11" name="Helvetica"/>
-                                                <font key="NSOriginalFont" size="12" name="Helvetica"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                    <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bSx-5b-cko">
-                                <rect key="frame" x="212.66666666666666" y="0.0" width="73.999999999999972" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="VWr-ZY-1v6"/>
-                                </constraints>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" imagePlacement="top">
-                                    <imageReference key="image" image="arrow.trianglehead.counterclockwise.icloud" catalog="system" symbolScale="large"/>
-                                    <backgroundConfiguration key="background" cornerRadius="20"/>
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Lịch sử">
-                                            <attributes>
-                                                <font key="NSFont" size="11" name="Helvetica"/>
-                                                <font key="NSOriginalFont" size="12" name="Helvetica"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                    <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JVb-gg-uFh">
-                                <rect key="frame" x="318.66666666666669" y="0.0" width="74.333333333333314" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="hVh-Sh-337"/>
-                                </constraints>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" imagePlacement="top">
-                                    <imageReference key="image" image="wallet.bifold" catalog="system" symbolScale="large"/>
-                                    <backgroundConfiguration key="background" cornerRadius="20"/>
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Số dư">
-                                            <attributes>
-                                                <font key="NSFont" size="11" name="Helvetica"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                    <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                             </button>
                         </subviews>
-                        <constraints>
-                            <constraint firstItem="pXT-ns-D2Z" firstAttribute="width" secondItem="bSx-5b-cko" secondAttribute="width" id="WYs-gY-YRF"/>
-                        </constraints>
                     </stackView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MPs-mC-ymB">
-                        <rect key="frame" x="0.0" y="71" width="393" height="38.333333333333343"/>
-                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" title="Trung tâm hỗ trợ"/>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gsa-yO-Z33">
-                        <rect key="frame" x="20" y="109.33333333333333" width="353" height="41.333333333333329"/>
-                        <color key="tintColor" name="MajorColor"/>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain">
-                            <backgroundConfiguration key="background" cornerRadius="20">
-                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
-                            </backgroundConfiguration>
-                            <attributedString key="attributedTitle">
-                                <fragment content="Hotline 1900 9000">
-                                    <attributes>
-                                        <font key="NSFont" size="20" name="Avenir-Heavy"/>
-                                        <font key="NSOriginalFont" size="12" name="Helvetica"/>
-                                    </attributes>
-                                </fragment>
-                            </attributedString>
-                        </buttonConfiguration>
-                    </button>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qlY-HV-9w5">
-                        <rect key="frame" x="0.0" y="65" width="393" height="1"/>
-                        <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="1" id="8S4-sz-q5O"/>
-                        </constraints>
-                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="qlY-HV-9w5" firstAttribute="top" secondItem="ogy-gd-orW" secondAttribute="bottom" constant="5" id="D58-v0-fHc"/>
-                    <constraint firstItem="ogy-gd-orW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="FPt-Tt-N5x"/>
-                    <constraint firstItem="MPs-mC-ymB" firstAttribute="top" secondItem="qlY-HV-9w5" secondAttribute="bottom" constant="5" id="GBS-X3-jRm"/>
-                    <constraint firstItem="MPs-mC-ymB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Vqr-Bf-0PP"/>
-                    <constraint firstItem="ogy-gd-orW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="XQi-Q3-VxO"/>
-                    <constraint firstAttribute="trailing" secondItem="MPs-mC-ymB" secondAttribute="trailing" id="YTf-FG-l91"/>
-                    <constraint firstAttribute="trailing" secondItem="ogy-gd-orW" secondAttribute="trailing" id="Zk3-Cw-Nwg"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="gsa-yO-Z33" secondAttribute="trailing" id="a0V-T4-B1I"/>
-                    <constraint firstItem="gsa-yO-Z33" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="rMU-Hj-Iah"/>
-                    <constraint firstItem="qlY-HV-9w5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="rgt-Gn-fKc"/>
-                    <constraint firstAttribute="trailing" secondItem="qlY-HV-9w5" secondAttribute="trailing" id="v1a-b1-hhO"/>
-                    <constraint firstItem="gsa-yO-Z33" firstAttribute="top" secondItem="MPs-mC-ymB" secondAttribute="bottom" id="wVy-UM-Opn"/>
+                    <constraint firstAttribute="trailing" secondItem="ftY-QV-nnt" secondAttribute="trailing" constant="20" id="8Qv-GW-Dz8"/>
+                    <constraint firstItem="ftY-QV-nnt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="TCK-AB-J4p"/>
+                    <constraint firstItem="ftY-QV-nnt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Ztj-PB-t60"/>
+                    <constraint firstAttribute="bottom" secondItem="ftY-QV-nnt" secondAttribute="bottom" constant="20" id="bic-HC-edr"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -171,10 +171,10 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="arrow.trianglehead.counterclockwise.icloud" catalog="system" width="128" height="90"/>
-        <image name="calendar.and.person" catalog="system" width="128" height="99"/>
-        <image name="person" catalog="system" width="128" height="121"/>
-        <image name="wallet.bifold" catalog="system" width="128" height="103"/>
+        <image name="calendar" catalog="system" width="128" height="107"/>
+        <image name="clock.arrow.circlepath" catalog="system" width="128" height="112"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="wallet.pass" catalog="system" width="115" height="128"/>
         <namedColor name="MajorColor">
             <color red="0.17254901960784313" green="0.52549019607843139" blue="0.40392156862745099" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

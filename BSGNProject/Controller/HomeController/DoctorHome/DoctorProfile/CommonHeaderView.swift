@@ -68,24 +68,47 @@ class CommonHeaderView: UIView {
         seeAllButton.setTitleColor(btnColor, for: .normal)
     }
     
-    func layout(top: CGFloat = 0, leading: CGFloat = 12, trailing: CGFloat = 12, bottom: CGFloat = 0, iconSize: CGFloat = 20) {
+    func layout(top: CGFloat = 0, leading: CGFloat = 12, trailing: CGFloat = 12, bottom: CGFloat? = nil) {
+        containerStackView.snp.removeConstraints()
         containerStackView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(top)
-            make.bottom.equalToSuperview().offset(bottom)
+            if let bottom = bottom {
+                make.bottom.equalToSuperview().offset(bottom)
+            }
             make.leading.equalToSuperview().offset(leading)
             make.trailing.equalToSuperview().offset(trailing)
         }
-        
-        icon.snp.makeConstraints { make in
-            make.width.equalTo(icon.snp.height)
-            make.height.equalTo(iconSize)
+    }
+    
+    func layout(top: CGFloat? = nil, bottom: CGFloat? = nil, padding: CGFloat) {
+        containerStackView.snp.removeConstraints()
+        containerStackView.snp.makeConstraints { make in
+            if let top = top {
+                make.top.equalToSuperview().offset(top)
+            } else if let bottom = bottom {
+                make.bottom.equalToSuperview().inset(bottom)
+            } else {
+                make.centerY.equalToSuperview()
+            }
+            make.leading.trailing.equalToSuperview().inset(padding)
         }
+    }
+    
+    func setSpacing(_ space: CGFloat) {
+        titleStackView.spacing = space
+    }
+    
+    func setRightButtonHidden(_ ishidden: Bool) {
+        seeAllButton.alpha = ishidden ? 0 : 1
     }
 }
 
 private extension CommonHeaderView {
     func setUpUI() {
         addSubview(containerStackView)
+        icon.snp.makeConstraints { make in
+            make.width.equalTo(icon.snp.height)
+        }
     }
     
     @objc func btnTapped() {

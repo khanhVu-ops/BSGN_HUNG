@@ -24,14 +24,14 @@
                             <constraint firstAttribute="width" constant="120" id="wMf-zK-2P8"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Xin chào, Bác sỹ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DCf-8u-8Mf">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Xin chào, Bác sỹ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DCf-8u-8Mf">
                         <rect key="frame" x="97.666666666666686" y="140" width="125" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thứ Ba, ngày 22 tháng 10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3Y-lo-q1p">
-                        <rect key="frame" x="83.000000000000014" y="161" width="154.33333333333337" height="15.666666666666657"/>
+                        <rect key="frame" x="83.000000000000014" y="161" width="154.33333333333337" height="49"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -43,6 +43,7 @@
                     <constraint firstItem="VWr-xV-jbX" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="9Ii-se-h8U"/>
                     <constraint firstItem="DCf-8u-8Mf" firstAttribute="top" secondItem="VWr-xV-jbX" secondAttribute="bottom" constant="10" id="Fkj-gk-Hns"/>
                     <constraint firstItem="d3Y-lo-q1p" firstAttribute="top" secondItem="DCf-8u-8Mf" secondAttribute="bottom" id="mJW-SB-7bW"/>
+                    <constraint firstAttribute="bottom" secondItem="d3Y-lo-q1p" secondAttribute="bottom" constant="20" id="u2M-ye-6db"/>
                     <constraint firstItem="DCf-8u-8Mf" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="wEo-zm-gto"/>
                 </constraints>
             </tableViewCellContentView>

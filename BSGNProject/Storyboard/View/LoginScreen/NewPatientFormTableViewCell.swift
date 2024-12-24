@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewPatientFormTableViewCell: UITableViewCell, SummaryMethod {
+class NewPatientFormTableViewCell: BaseTableViewCell, SummaryMethod {
 
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var bloodTextField: UITextField!
