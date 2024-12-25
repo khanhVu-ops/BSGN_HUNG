@@ -25,4 +25,8 @@ struct Patient: Codable {
     var balance: Int
     var isInAppointment: Int
     var typeOfAccount: Int = 0 // Mặc định là 0 cho patient
+    
+    func getFullName() -> String? {
+        return name + " " + lastName
+    }
 }

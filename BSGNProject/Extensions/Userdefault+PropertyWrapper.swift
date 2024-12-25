@@ -8,7 +8,10 @@
 import Foundation
 
 enum UserDefaultKey: String, CaseIterable {
-    case user
+    case patient
+    case doctor
+    case uid
+    case role
 }
 
 

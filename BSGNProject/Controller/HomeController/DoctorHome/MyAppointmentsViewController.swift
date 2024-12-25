@@ -18,6 +18,8 @@ class MyAppointmentsViewController: UIViewController {
     @IBOutlet weak var majorLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet weak var infoBorderView: UIView!
+    @IBOutlet weak var timeBorderView: UIView!
     var isBooked: String?
     var appointmentID: String?
     var appointment: Appointment?
@@ -28,6 +30,8 @@ class MyAppointmentsViewController: UIViewController {
         
     }
     private func setup() {
+        infoBorderView.backgroundColor = UIColor(hex: "#D7E6DF")
+        timeBorderView.backgroundColor = UIColor(hex: "#D7E6DF")
         cancelButton.isHidden = true
         doneButton.isHidden = true
     }

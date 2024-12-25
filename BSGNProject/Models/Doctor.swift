@@ -24,4 +24,8 @@ struct Doctor: Codable {
     var balance: Int
     var major: String
     var training_place: String
+    
+    func getFullName() -> String? {
+        return firstName + " " + lastName
+    }
 }

@@ -48,10 +48,10 @@ extension DoctorProfileViewController {
         
         var title: String? {
             switch self {
-            case .name: "Nguyễn Dương Long"
-            case .phone: "038 xxxx xxx"
-            case .major: "Bác sĩ chuyên khoa tim mạch"
-            case .paymentMethod: "Zalo pay: 038 XXXX XXX"
+            case .name: Global.role == .doctor ? Global.doctor?.getFullName() : Global.patient?.getFullName()
+            case .phone: Global.role == .doctor ? Global.doctor?.phoneNumber : Global.patient?.phoneNumber
+            case .major: "Bác sĩ chuyên khoa " + (Global.doctor?.major ?? "")
+            case .paymentMethod: "Zalo pay: " + (Global.doctor?.phoneNumber ?? "")
             case .signOut: "Đăng xuất"
             default: nil
             }

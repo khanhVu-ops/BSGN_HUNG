@@ -7,10 +7,30 @@
 
 import Foundation
 import UIKit
+import FirebaseAuth
 
+enum Role: String {
+    case patient
+    case doctor
+    case none
+}
 class Global {
+    static var role: Role = .none
     
-
+    static var uid: String?
+    
+    @ObjectUserDefault(.patient)
+    static var patient: Patient?
+    
+    @ObjectUserDefault(.doctor)
+    static var doctor: Doctor?
+    
+    static func logout() {
+        role = .none
+        uid = nil
+        patient = nil
+        doctor = nil
+    }
 }
 
 let screenWidth = UIScreen.main.bounds.width

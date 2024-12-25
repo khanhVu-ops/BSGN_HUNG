@@ -21,34 +21,37 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         guard let userId = Auth.auth().currentUser?.uid else {
             // Not Login
+            Global.logout()
             toIntro()
             return
         }
         
+        Global.uid = userId
+        
         let ref = Database.database().reference()
         
-        ref.child("users").child("doctors").child(userId).observeSingleEvent(of: .value) { (snapshot) in
-            if snapshot.exists() {
-
-//                self.fetchDoctorAttributes(userId: userId)
-                let vc = DoctorHomeViewController()
-                let navController = BaseNavigationController(rootViewController: vc)
-//                navController.setNavigationBarHidden(true, animated: false)
-                window.rootViewController = navController
-                self.window = window
-                window.makeKeyAndVisible()
-            } else {
-                ref.child("users").child("patients").child(userId).observeSingleEvent(of: .value) { (snapshot) in
-                    if snapshot.exists() {
-                        let vc = TabbarController()
-                        let navController = BaseNavigationController(rootViewController: vc)
-                        navController.setNavigationBarHidden(true, animated: false)
-                        window.rootViewController = navController
-                        self.window = window
-                        window.makeKeyAndVisible()
-                    } else {
-                        self.toIntro()
-                        print("User data not found in either doctors or patients.")
+        FirebaseDatabaseService.fetchDoctor(by: userId) { [weak self] result in
+            switch result {
+            case .success(let doctor):
+                print("Doctor fetched successfully: \(doctor)")
+                // Xử lý dữ liệu doctor, ví dụ hiển thị giao diện
+                Global.doctor = doctor
+                Global.role = .doctor
+                self?.toDoctor()
+            case .failure(let error):
+                print("Failed to fetch doctor: \(error.localizedDescription)")
+                FirebaseDatabaseService.fetchPatient(by: userId) { [weak self] result in
+                    switch result {
+                    case .success(let patient):
+                        print("Patient fetched successfully: \(patient)")
+                        // Xử lý dữ liệu doctor, ví dụ hiển thị giao diện
+                        Global.patient = patient
+                        Global.role = .patient
+                        self?.toPatient()
+                    case .failure(let error):
+                        print("Failed to fetch doctor: \(error.localizedDescription)")
+                        Global.logout()
+                        self?.toIntro()
                     }
                 }
             }
@@ -92,8 +95,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window?.rootViewController = navController
             window?.makeKeyAndVisible()
         } catch {
-            
+            ToastApp.show(error.localizedDescription)
         }
+    }
+    
+    func toPatient() {
+        let vc = TabbarController()
+        let navController = BaseNavigationController(rootViewController: vc)
+        navController.setNavigationBarHidden(true, animated: false)
+        window?.rootViewController = navController
+        window?.makeKeyAndVisible()
+    }
+    
+    func toDoctor() {
+        let vc = DoctorHomeViewController()
+        let navController = BaseNavigationController(rootViewController: vc)
+//                navController.setNavigationBarHidden(true, animated: false)
+        window?.rootViewController = navController
+        window?.makeKeyAndVisible()
     }
 
 }

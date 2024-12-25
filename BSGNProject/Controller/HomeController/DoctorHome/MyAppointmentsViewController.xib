@@ -18,9 +18,11 @@
                 <outlet property="avatarImageView" destination="9YW-D8-Pnu" id="g50-lh-7dB"/>
                 <outlet property="cancelButton" destination="Xf8-Dn-lrB" id="Rmk-Ea-g2j"/>
                 <outlet property="doneButton" destination="oxA-KB-wIt" id="bXg-6w-Vmp"/>
+                <outlet property="infoBorderView" destination="muq-6W-ZSW" id="A6d-N0-EAd"/>
                 <outlet property="majorLabel" destination="CoE-a8-Ec1" id="813-SK-kdz"/>
                 <outlet property="nameLabel" destination="n0I-z4-0BD" id="rUV-yL-0Ht"/>
                 <outlet property="symtomsLabel" destination="Yw7-hv-OKH" id="yPh-Dw-Ka7"/>
+                <outlet property="timeBorderView" destination="4cO-sw-uri" id="Sl0-Ke-bK9"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -262,7 +264,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="btd-Kr-wf4" secondAttribute="bottom" id="g5l-kx-GZk"/>
                 <constraint firstItem="btd-Kr-wf4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="vzn-UD-gE1"/>
             </constraints>
-            <point key="canvasLocation" x="132" y="-11"/>
+            <point key="canvasLocation" x="130.53435114503816" y="-11.267605633802818"/>
         </view>
     </objects>
     <resources>

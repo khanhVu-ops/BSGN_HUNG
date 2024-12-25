@@ -181,6 +181,7 @@
 		33B7CA8D2D1B2039006C54F1 /* TransactionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33B7CA8C2D1B2039006C54F1 /* TransactionTableViewCell.xib */; };
 		33B7CA8E2D1B2039006C54F1 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B7CA8B2D1B2039006C54F1 /* TransactionTableViewCell.swift */; };
 		6C9EE4061309E7612C268D01 /* Pods_BSGNProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EBE9C072CD08EC9008CAA85 /* Pods_BSGNProject.framework */; };
+		8485D7C52D1BD6B9006F0075 /* FirebaseDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485D7C42D1BD6B9006F0075 /* FirebaseDatabaseService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -450,6 +451,7 @@
 		33B7CA8C2D1B2039006C54F1 /* TransactionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionTableViewCell.xib; sourceTree = "<group>"; };
 		448AA557AC6112AC4C5F928E /* Pods_BSGNProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BSGNProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D04E387F2411D0486006066 /* Pods-BSGNProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BSGNProject.release.xcconfig"; path = "Target Support Files/Pods-BSGNProject/Pods-BSGNProject.release.xcconfig"; sourceTree = "<group>"; };
+		8485D7C42D1BD6B9006F0075 /* FirebaseDatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDatabaseService.swift; sourceTree = "<group>"; };
 		ADF2FF5641813A67B62A0EC0 /* Pods-BSGNProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BSGNProject.debug.xcconfig"; path = "Target Support Files/Pods-BSGNProject/Pods-BSGNProject.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -639,6 +641,7 @@
 				2C81D8DB2C7056DD00408715 /* BaseService2.swift */,
 				2C81D8DD2C70572300408715 /* HomeService2.swift */,
 				0E49B4AB2CDA10DE00B26171 /* GlobalService.swift */,
+				8485D7C42D1BD6B9006F0075 /* FirebaseDatabaseService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1420,6 +1423,7 @@
 				2C3155432C6F435200E9A4AF /* BaseService.swift in Sources */,
 				2C67BE6A2C773045004ED1C2 /* DoctorListViewController.swift in Sources */,
 				0E39EBAE2CB380C000E007AC /* RegisterPatientViewController.swift in Sources */,
+				8485D7C52D1BD6B9006F0075 /* FirebaseDatabaseService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

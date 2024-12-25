@@ -20,7 +20,6 @@ class ProfileItemCell: BaseTableViewCell {
     func bind(_ item: DoctorProfileViewController.ProfileRow) {
         titleLabel.text = item.title
     }
-    
 }
 
 private extension ProfileItemCell {
