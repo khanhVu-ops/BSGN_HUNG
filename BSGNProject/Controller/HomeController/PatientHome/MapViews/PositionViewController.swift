@@ -82,20 +82,11 @@ class PositionViewController: UIViewController {
 //        self.navigationController?.pushViewController(mapVC, animated: true)
     }
     func showSuccessPopup() {
-        // Tạo và hiển thị SuccessPopupView
-        let popupView = PopUpView(frame: CGRect(x: 40, y: (view.frame.height) / 2 - 100, width: (view.frame.width) - 80, height: 250))
-        
-        // Đặt closure onConfirm để xử lý khi bấm nút "Xác nhận"
-        popupView.onConfirm = {
-            // Ẩn popup khi bấm nút xác nhận
-            popupView.removeFromSuperview()
+        CommonAlertViewController.present(.init(title: "Thông báo", subtitle: "Đăng ký khám thành công!", note: "Vui lòng chờ cho tới khi có bác sỹ nhận.")) {
             let myappointmentVC = PatientAppointmentViewController()
             self.navigationController?.pushViewController(myappointmentVC, animated: true)
             myappointmentVC.setupNavigationBar(with: "Thông tin bác sỹ", with: false)
         }
-        
-        // Thêm popup vào view chính
-        view.addSubview(popupView)
     }
 }
 

@@ -30,16 +30,18 @@ class DoctorProfileViewController: UIViewController {
     }
 
     private func signOut() {
-        do {
-            try Auth.auth().signOut()
-            print("User logged out successfully.")
-            
-            // Điều hướng về màn hình đăng nhập
-            let introViewController = IntroViewController()
-            navigationController?.viewControllers = [introViewController]
-            
-        } catch let signOutError as NSError {
-            print("Error signing out: \(signOutError.localizedDescription)")
+        CommonAlertViewController.present(.init(title: "Đăng xuất", subtitle: "Bạn có chắc muốn đăng xuất!")) { [weak self] in
+            do {
+                try Auth.auth().signOut()
+                print("User logged out successfully.")
+                
+                // Điều hướng về màn hình đăng nhập
+                let introViewController = IntroViewController()
+                self?.navigationController?.viewControllers = [introViewController]
+                
+            } catch let signOutError as NSError {
+                print("Error signing out: \(signOutError.localizedDescription)")
+            }
         }
     }
 }

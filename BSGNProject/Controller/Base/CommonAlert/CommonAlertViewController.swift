@@ -85,7 +85,7 @@ private extension CommonAlertViewController {
         cancelButton.setTitleColor(UIColor.darkGray, for: .normal)
         
         doneButton.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
-        doneButton.setTitleColor(UIColor.blue, for: .normal)
+        doneButton.setTitleColor(UIColor(hex: "#6CDFA9", alpha: 1), for: .normal)
         
         [lineVerticalView, lineHorizontalView].forEach { $0?.backgroundColor = .white.withAlphaComponent(0.2)}
     }
