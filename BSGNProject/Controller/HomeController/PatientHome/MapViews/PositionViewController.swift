@@ -23,7 +23,7 @@ class PositionViewController: UIViewController {
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
     }
-
+    
     // Tìm địa điểm gần nhất dựa vào vị trí hiện tại
     private func findNearestPlace(for location: CLLocation) {
         // Không sử dụng naturalLanguageQuery để tìm kiếm tất cả địa điểm

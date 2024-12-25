@@ -25,26 +25,25 @@ class PatientBookViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
 
     @IBOutlet private weak var findButton: UIButton!
-    @IBOutlet private weak var detailMedicalLabel: UILabel!
+    @IBOutlet weak var borderTextView: UIView!
+    @IBOutlet weak var detailTextView: UITextView!
     @IBOutlet private weak var majorTextField: UITextField!
     @IBOutlet private weak var backgroundImageVIew: UIImageView!
-    @IBOutlet private weak var majorPickerView: UIPickerView!
-    
+    private let majorPickerView = UIPickerView()
+
     private let majorData: [String] = ["Tim mạch", "Da liễu", "Thần kinh", "Nhi khoa", "Chỉnh hình", "Nhãn khoa", "Tiêu hóa", "Hô hấp", "Sản khoa", "Nội tiết"]
     private var keyboardTextFields: UITextField!
      
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        setUpTextView()
     }
     private func setupUI() {
         majorPickerView.delegate = self
         majorPickerView.dataSource = self
-        majorPickerView.isHidden = true
         majorTextField.inputView = majorPickerView
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissPickerView))
-        majorTextField.addGestureRecognizer(tapGesture)
+        majorTextField.inputAccessoryView = createToolbar(action: #selector(dismissPickerView))
         
         keyboardTextFields = UITextField()
         keyboardTextFields.placeholder = "Mô tả"
@@ -61,97 +60,47 @@ class PatientBookViewController: UIViewController, UIPickerViewDelegate, UIPicke
         
 
         
-        let shadowLayer = CAShapeLayer()
-        
-        shadowLayer.path = UIBezierPath(roundedRect: detailMedicalLabel.bounds, cornerRadius: 10).cgPath
-        shadowLayer.fillColor = UIColor.white.cgColor
-        
-        shadowLayer.shadowColor = UIColor.black.cgColor
-        shadowLayer.shadowPath = shadowLayer.path
-        shadowLayer.shadowOffset = CGSize(width: 0.0, height: 1.0)
-        shadowLayer.shadowOpacity = 0.2
-        shadowLayer.shadowRadius = 3
-        
-        detailMedicalLabel.layer.insertSublayer(shadowLayer, at: 0)
-        shadowLayer.opacity = 0
-        detailMedicalLabel.layer.borderColor = UIColor.gray.cgColor
-        detailMedicalLabel.layer.borderWidth = 0.4
-        detailMedicalLabel.layer.cornerRadius = 10
         findButton.layer.shadowColor = UIColor.black.cgColor
         findButton.layer.shadowOffset = CGSize(width: 3, height: 3)
         findButton.layer.shadowRadius = 4
         findButton.layer.shadowOpacity = 0.5
-        
-        let labelTapGesture = UITapGestureRecognizer(target: self, action: #selector(showKeyboard))
-        detailMedicalLabel.isUserInteractionEnabled = true
-        detailMedicalLabel.addGestureRecognizer(labelTapGesture)
-        
-        addDoneButtonToKeyboard()
     }
-    func addDoneButtonToPickerView() {
-        let toolbar = UIToolbar()
-        toolbar.sizeToFit()
+    
+    func setUpTextView() {
+        borderTextView._cornerRadius = 20
+        borderTextView.layer.masksToBounds = true
+        borderTextView.backgroundColor = UIColor(hex: "#D7E6DF", alpha: 1)
+
+        detailTextView.font = .systemFont(ofSize: 16, weight: .medium)
+        detailTextView.textColor = .black
         
-        // Nút Done
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(dismissPickerView))
-        
-        // Khoảng trắng để đẩy nút Done sang phải
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        
-        toolbar.setItems([flexibleSpace, doneButton], animated: false)
-        
-        // Gắn toolbar vào inputAccessoryView của UITextField
-        majorTextField.inputAccessoryView = toolbar
+        detailTextView.placeholder = "Mô tả chi tiết ở đây"
+        detailTextView.placeholderColor = .darkGray
     }
     
     
     // MARK: - UIPickerViewDelegate & UIPickerViewDataSource
     @objc private func dismissPickerView() {
-        if majorPickerView.isHidden {
-            UIView.animate(withDuration: 0.1) {
-                self.majorPickerView.isHidden = false
-            }
-        } else {
-            UIView.animate(withDuration: 0.1) {
-                self.majorPickerView.isHidden = true
-            }
-        }
+        let selectedRow = majorPickerView.selectedRow(inComponent: 0)
+        majorTextField.text = majorData[selectedRow]
+        majorTextField.resignFirstResponder()
     }
-    
-    @objc private func showKeyboard() {
-        print("111")
-        self.keyboardTextFields.becomeFirstResponder()
-    }
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
-            let keyboardHeight = keyboardFrame.height
-            // Di chuyển textField lên trên bàn phím
-            UIView.animate(withDuration: 0.3) {
-                self.keyboardTextFields.transform = CGAffineTransform(translationX: 0, y: -keyboardHeight - 60)
-            }
-        }
-    }
-    func addDoneButtonToKeyboard() {
+
+    private func createToolbar(action: Selector) -> UIToolbar {
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(dismissKeyboard))
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: action)
+        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolbar.setItems([space, doneButton], animated: true)
         
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-
-        toolbar.items = [flexSpace, doneButton]
-        
-        keyboardTextFields.inputAccessoryView = toolbar
+        return toolbar
     }
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-        UIView.animate(withDuration: 0.3) {
-            self.keyboardTextFields.transform = .identity
-        }
-    }
+    
     @objc func textFieldDidChange(_ textField: UITextField) {
-        detailMedicalLabel.text = keyboardTextFields.text
+//        detailMedicalLabel.text = keyboardTextFields.text
     }
+    
     @IBAction func didTapFind(_ sender: Any) {
 //        let alert = UIAlertController(title: "Thông báo", message: "Bạn có chắc chắn muốn tìm kiếm?", preferredStyle: .alert)
 //        let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
@@ -167,7 +116,7 @@ class PatientBookViewController: UIViewController, UIPickerViewDelegate, UIPicke
             mapVC.setupNavigationBar(with: "Xác nhận vị trí của bạn", with: false)
             GlobalService.appointmentData["specialty"] = majorTextField.text
 
-            GlobalService.appointmentData["symtoms"] =  detailMedicalLabel.text
+            GlobalService.appointmentData["symtoms"] =  detailTextView.text
         } else {
             print("Navigation controller is nil")
         }
