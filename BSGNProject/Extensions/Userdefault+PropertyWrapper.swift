@@ -12,6 +12,7 @@ enum UserDefaultKey: String, CaseIterable {
     case doctor
     case uid
     case role
+    case isRequestLocationPermission
 }
 
 

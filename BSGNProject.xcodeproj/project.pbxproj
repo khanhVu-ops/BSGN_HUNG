@@ -183,6 +183,7 @@
 		6C9EE4061309E7612C268D01 /* Pods_BSGNProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EBE9C072CD08EC9008CAA85 /* Pods_BSGNProject.framework */; };
 		8485D7C52D1BD6B9006F0075 /* FirebaseDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485D7C42D1BD6B9006F0075 /* FirebaseDatabaseService.swift */; };
 		8485D7CD2D1C21C3006F0075 /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485D7CC2D1C21C3006F0075 /* UITextView+.swift */; };
+		8485D7CF2D1C2474006F0075 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485D7CE2D1C2474006F0075 /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -454,6 +455,7 @@
 		6D04E387F2411D0486006066 /* Pods-BSGNProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BSGNProject.release.xcconfig"; path = "Target Support Files/Pods-BSGNProject/Pods-BSGNProject.release.xcconfig"; sourceTree = "<group>"; };
 		8485D7C42D1BD6B9006F0075 /* FirebaseDatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDatabaseService.swift; sourceTree = "<group>"; };
 		8485D7CC2D1C21C3006F0075 /* UITextView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
+		8485D7CE2D1C2474006F0075 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		ADF2FF5641813A67B62A0EC0 /* Pods-BSGNProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BSGNProject.debug.xcconfig"; path = "Target Support Files/Pods-BSGNProject/Pods-BSGNProject.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -586,6 +588,7 @@
 		2C2763F72C748D8B0022192D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				8485D7CE2D1C2474006F0075 /* LocationManager.swift */,
 				8485D7CC2D1C21C3006F0075 /* UITextView+.swift */,
 				336CFAB22D19BA35004487E6 /* Typealiases.swift */,
 				336CFABE2D19D7FA004487E6 /* UView+.swift */,
@@ -1389,6 +1392,7 @@
 				2C31554F2C6F4E9100E9A4AF /* DoctorViewModel.swift in Sources */,
 				0E689F7B2D111A0500737853 /* File.swift in Sources */,
 				2CE948AA2C6F5C2500BFD7D9 /* ArticleCollectionViewCell.swift in Sources */,
+				8485D7CF2D1C2474006F0075 /* LocationManager.swift in Sources */,
 				2C358B6B2C78444F00336C93 /* TextTableViewCell.swift in Sources */,
 				336CFAA42D19B8D5004487E6 /* UILabel+.swift in Sources */,
 				2C3155512C6F4F3200E9A4AF /* APIsources.swift in Sources */,
