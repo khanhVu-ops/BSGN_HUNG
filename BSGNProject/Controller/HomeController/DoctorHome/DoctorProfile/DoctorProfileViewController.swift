@@ -37,7 +37,9 @@ class DoctorProfileViewController: UIViewController {
                 
                 // Điều hướng về màn hình đăng nhập
                 let introViewController = IntroViewController()
-                self?.navigationController?.viewControllers = [introViewController]
+                let nav = UIApplication.shared.windows.first?.rootViewController as? UINavigationController
+
+                nav?.viewControllers = [introViewController]
                 
             } catch let signOutError as NSError {
                 print("Error signing out: \(signOutError.localizedDescription)")

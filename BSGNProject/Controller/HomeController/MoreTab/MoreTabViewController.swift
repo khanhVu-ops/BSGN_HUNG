@@ -54,9 +54,9 @@ class MoreTabViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
                 // Điều hướng về màn hình đăng nhập
                 let introViewController = IntroViewController()
-                self.navigationController?.pushViewController(introViewController, animated: true)
-                introViewController.navigationController?.setNavigationBarHidden(true, animated: false)
-                introViewController.tabBarController?.tabBar.isHidden = true
+                let nav = UIApplication.shared.windows.first?.rootViewController as? UINavigationController
+
+                nav?.viewControllers = [introViewController]
             } catch let signOutError as NSError {
                 print("Error signing out: \(signOutError.localizedDescription)")
             }

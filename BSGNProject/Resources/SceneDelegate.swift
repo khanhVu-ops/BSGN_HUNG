@@ -9,9 +9,10 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+    class var shared: SceneDelegate {
+        return UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate ?? SceneDelegate()
+    }
     var window: UIWindow?
-
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
@@ -19,43 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         self.window = window
 
-        guard let userId = Auth.auth().currentUser?.uid else {
-            // Not Login
-            Global.logout()
-            toIntro()
-            return
-        }
-        
-        Global.uid = userId
-        
-        let ref = Database.database().reference()
-        
-        FirebaseDatabaseService.fetchDoctor(by: userId) { [weak self] result in
-            switch result {
-            case .success(let doctor):
-                print("Doctor fetched successfully: \(doctor)")
-                // Xử lý dữ liệu doctor, ví dụ hiển thị giao diện
-                Global.doctor = doctor
-                Global.role = .doctor
-                self?.toDoctor()
-            case .failure(let error):
-                print("Failed to fetch doctor: \(error.localizedDescription)")
-                FirebaseDatabaseService.fetchPatient(by: userId) { [weak self] result in
-                    switch result {
-                    case .success(let patient):
-                        print("Patient fetched successfully: \(patient)")
-                        // Xử lý dữ liệu doctor, ví dụ hiển thị giao diện
-                        Global.patient = patient
-                        Global.role = .patient
-                        self?.toPatient()
-                    case .failure(let error):
-                        print("Failed to fetch doctor: \(error.localizedDescription)")
-                        Global.logout()
-                        self?.toIntro()
-                    }
-                }
-            }
-        }
+        splash()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -115,5 +80,50 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
     }
 
+    func splash() {
+        let splashVC = SplashViewController()
+        window?.rootViewController = splashVC
+        window?.makeKeyAndVisible()
+    }
+    
+    func rootApp() {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            // Not Login
+            Global.logout()
+            toIntro()
+            return
+        }
+        
+        Global.uid = userId
+        
+        let ref = Database.database().reference()
+        
+        FirebaseDatabaseService.fetchDoctor(by: userId) { [weak self] result in
+            switch result {
+            case .success(let doctor):
+                print("Doctor fetched successfully: \(doctor)")
+                // Xử lý dữ liệu doctor, ví dụ hiển thị giao diện
+                Global.doctor = doctor
+                Global.role = .doctor
+                self?.toDoctor()
+            case .failure(let error):
+                print("Failed to fetch doctor: \(error.localizedDescription)")
+                FirebaseDatabaseService.fetchPatient(by: userId) { [weak self] result in
+                    switch result {
+                    case .success(let patient):
+                        print("Patient fetched successfully: \(patient)")
+                        // Xử lý dữ liệu doctor, ví dụ hiển thị giao diện
+                        Global.patient = patient
+                        Global.role = .patient
+                        self?.toPatient()
+                    case .failure(let error):
+                        print("Failed to fetch doctor: \(error.localizedDescription)")
+                        Global.logout()
+                        self?.toIntro()
+                    }
+                }
+            }
+        }
+    }
 }
 

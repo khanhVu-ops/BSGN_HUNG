@@ -153,6 +153,8 @@
 		335B9AE92D19F413004F598C /* DoctorHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335B9AE62D19F413004F598C /* DoctorHistoryViewController.swift */; };
 		335B9AED2D19F442004F598C /* DoctorHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 335B9AEC2D19F442004F598C /* DoctorHistoryTableViewCell.xib */; };
 		335B9AEE2D19F442004F598C /* DoctorHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335B9AEB2D19F442004F598C /* DoctorHistoryTableViewCell.swift */; };
+		335D4C5B2D1DAE440057A6F4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335D4C592D1DAE440057A6F4 /* SplashViewController.swift */; };
+		335D4C5C2D1DAE440057A6F4 /* SplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 335D4C5A2D1DAE440057A6F4 /* SplashViewController.xib */; };
 		336CFAA32D19B8D5004487E6 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336CFAA12D19B8D4004487E6 /* Global.swift */; };
 		336CFAA42D19B8D5004487E6 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336CFAA22D19B8D5004487E6 /* UILabel+.swift */; };
 		336CFAA82D19B8FE004487E6 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336CFAA62D19B8FE004487E6 /* BaseViewController.swift */; };
@@ -424,6 +426,8 @@
 		335B9AE72D19F413004F598C /* DoctorHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoctorHistoryViewController.xib; sourceTree = "<group>"; };
 		335B9AEB2D19F442004F598C /* DoctorHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		335B9AEC2D19F442004F598C /* DoctorHistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoctorHistoryTableViewCell.xib; sourceTree = "<group>"; };
+		335D4C592D1DAE440057A6F4 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		335D4C5A2D1DAE440057A6F4 /* SplashViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashViewController.xib; sourceTree = "<group>"; };
 		336CFAA12D19B8D4004487E6 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		336CFAA22D19B8D5004487E6 /* UILabel+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		336CFAA62D19B8FE004487E6 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -877,6 +881,7 @@
 		2C888DD52C6B03F400AA19D2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				335D4C582D1DAE1F0057A6F4 /* SplashScreen */,
 				336CFAA52D19B8F8004487E6 /* Base */,
 				2C358B632C7841DE00336C93 /* informationController */,
 				2C358B552C782F1C00336C93 /* DetailController */,
@@ -968,6 +973,15 @@
 				335B9AEC2D19F442004F598C /* DoctorHistoryTableViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		335D4C582D1DAE1F0057A6F4 /* SplashScreen */ = {
+			isa = PBXGroup;
+			children = (
+				335D4C592D1DAE440057A6F4 /* SplashViewController.swift */,
+				335D4C5A2D1DAE440057A6F4 /* SplashViewController.xib */,
+			);
+			path = SplashScreen;
 			sourceTree = "<group>";
 		};
 		336CFAA52D19B8F8004487E6 /* Base */ = {
@@ -1197,6 +1211,7 @@
 				2C358B742C787F2D00336C93 /* ButtonTableViewCell.xib in Resources */,
 				2C358B702C78469A00336C93 /* ChooseTableViewCell.xib in Resources */,
 				2C358B6C2C78444F00336C93 /* TextTableViewCell.xib in Resources */,
+				335D4C5C2D1DAE440057A6F4 /* SplashViewController.xib in Resources */,
 				0E689F782D1111DF00737853 /* NewPatientFormTableViewCell.xib in Resources */,
 				0E9BD8D72C92CAD900578EDC /* Launch Screen.storyboard in Resources */,
 				0E42F9122D0CA28400F1F5D8 /* MyAppointmentsViewController.xib in Resources */,
@@ -1392,6 +1407,7 @@
 				2C31554F2C6F4E9100E9A4AF /* DoctorViewModel.swift in Sources */,
 				0E689F7B2D111A0500737853 /* File.swift in Sources */,
 				2CE948AA2C6F5C2500BFD7D9 /* ArticleCollectionViewCell.swift in Sources */,
+				335D4C5B2D1DAE440057A6F4 /* SplashViewController.swift in Sources */,
 				8485D7CF2D1C2474006F0075 /* LocationManager.swift in Sources */,
 				2C358B6B2C78444F00336C93 /* TextTableViewCell.swift in Sources */,
 				336CFAA42D19B8D5004487E6 /* UILabel+.swift in Sources */,
@@ -1570,7 +1586,7 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show it on the map.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Ứng dụng cần truy cập thư viện ảnh để chọn ảnh hồ sơ.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
@@ -1606,7 +1622,7 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show it on the map.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Ứng dụng cần truy cập thư viện ảnh để chọn ảnh hồ sơ.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
