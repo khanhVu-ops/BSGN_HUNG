@@ -501,7 +501,6 @@ class GlobalService {
                     
                     let userBranch = (typeOfAccount == 1) ? "doctors" : "patients"
                     let userRef = self.database.child("users").child(userBranch).child(currentUser.uid)
-                    
                     userRef.updateChildValues(["avatar": downloadURL.absoluteString]) { error, _ in
                         if let error = error {
                             print("Failed to update avatar URL in Realtime Database: \(error.localizedDescription)")

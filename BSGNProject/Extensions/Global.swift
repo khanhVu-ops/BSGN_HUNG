@@ -13,6 +13,13 @@ enum Role: String {
     case patient
     case doctor
     case none
+    var name: String {
+        switch self {
+        case .patient: "patients"
+        case .doctor: "doctors"
+        case .none : ""
+        }
+    }
 }
 class Global {
     static var role: Role = .none

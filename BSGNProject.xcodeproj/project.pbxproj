@@ -183,6 +183,8 @@
 		33B7CA8D2D1B2039006C54F1 /* TransactionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33B7CA8C2D1B2039006C54F1 /* TransactionTableViewCell.xib */; };
 		33B7CA8E2D1B2039006C54F1 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B7CA8B2D1B2039006C54F1 /* TransactionTableViewCell.swift */; };
 		6C9EE4061309E7612C268D01 /* Pods_BSGNProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EBE9C072CD08EC9008CAA85 /* Pods_BSGNProject.framework */; };
+		84841A232D22B61000B6637C /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84841A222D22B61000B6637C /* UIImageView+.swift */; };
+		84841A252D22B9D300B6637C /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84841A242D22B9D300B6637C /* Indicator.swift */; };
 		8485D7C52D1BD6B9006F0075 /* FirebaseDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485D7C42D1BD6B9006F0075 /* FirebaseDatabaseService.swift */; };
 		8485D7CD2D1C21C3006F0075 /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485D7CC2D1C21C3006F0075 /* UITextView+.swift */; };
 		8485D7CF2D1C2474006F0075 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485D7CE2D1C2474006F0075 /* LocationManager.swift */; };
@@ -457,6 +459,8 @@
 		33B7CA8C2D1B2039006C54F1 /* TransactionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionTableViewCell.xib; sourceTree = "<group>"; };
 		448AA557AC6112AC4C5F928E /* Pods_BSGNProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BSGNProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D04E387F2411D0486006066 /* Pods-BSGNProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BSGNProject.release.xcconfig"; path = "Target Support Files/Pods-BSGNProject/Pods-BSGNProject.release.xcconfig"; sourceTree = "<group>"; };
+		84841A222D22B61000B6637C /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
+		84841A242D22B9D300B6637C /* Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
 		8485D7C42D1BD6B9006F0075 /* FirebaseDatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDatabaseService.swift; sourceTree = "<group>"; };
 		8485D7CC2D1C21C3006F0075 /* UITextView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
 		8485D7CE2D1C2474006F0075 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -613,6 +617,8 @@
 				0EFB00C52CF415B300F848DB /* LocationService.swift */,
 				336CFAC02D19DA34004487E6 /* UIColor+.swift */,
 				0E689F7A2D111A0500737853 /* File.swift */,
+				84841A222D22B61000B6637C /* UIImageView+.swift */,
+				84841A242D22B9D300B6637C /* Indicator.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1353,6 +1359,7 @@
 				2C6419852C6B055600D4AE58 /* Promotion.swift in Sources */,
 				335B9AEE2D19F442004F598C /* DoctorHistoryTableViewCell.swift in Sources */,
 				0EBAB09B2D002831004A54A4 /* NewDoctorFormTableViewCell.swift in Sources */,
+				84841A232D22B61000B6637C /* UIImageView+.swift in Sources */,
 				0EBBF2D92CD2349700BA65C5 /* RoundShadowView.swift in Sources */,
 				336CFAAC2D19BA21004487E6 /* UIApplication+.swift in Sources */,
 				33B7CA8A2D1B1F27006C54F1 /* BalanceTableViewCell.swift in Sources */,
@@ -1384,6 +1391,7 @@
 				337FF7F52D19EB380069A385 /* ProfileItemCell.swift in Sources */,
 				2C3155492C6F48FD00E9A4AF /* HomeData.swift in Sources */,
 				2C1BBC3A2C801B2E00F9D212 /* PersonalInformation.swift in Sources */,
+				84841A252D22B9D300B6637C /* Indicator.swift in Sources */,
 				0ECFD9792CACF083009AE439 /* MoreTabViewController.swift in Sources */,
 				33B7CA8E2D1B2039006C54F1 /* TransactionTableViewCell.swift in Sources */,
 				335B9AE92D19F413004F598C /* DoctorHistoryViewController.swift in Sources */,

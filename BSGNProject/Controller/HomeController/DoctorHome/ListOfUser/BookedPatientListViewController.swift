@@ -33,31 +33,47 @@ class BookedPatientListViewController: UIViewController, UITableViewDelegate, UI
         }
         
         // Lấy majorID từ Firebase
-        let majorRef = Database.database().reference().child("users").child("doctors").child(uid).child("majorID")
+//        let majorRef = Database.database().reference().child("users").child("doctors").child(uid).child("majorID")
+//        
+//        majorRef.observeSingleEvent(of: .value) { snapshot in
+//            if let majorID = snapshot.value as? Int {
+//                // Gọi fetchAppointments với majorID lấy được
+//                GlobalService.shared.fetchAppointments(completion: { appointments in
+//                    // Xử lý danh sách các cuộc hẹn nhận được
+//                    for appointment in appointments {
+//                        if appointment.doctorID == uid || appointment.doctorID == "00" {
+//                            self.appointmentList.append(appointment)
+//                        }
+//                    }
+//                    print(appointments)
+//                    self.bookedPatientListTableView.reloadData()
+//                }, majorID: majorID)
+//                print(majorID)
+//                self.bookedPatientListTableView.reloadData()
+//                print(self.appointmentList)
+//                print(self.appointmentList.count)
+//            } else {
+//                print("Failed to fetch majorID")
+//                print("uid: \(uid)")
+//                print(majorRef)
+//            }
+//        }
         
-        majorRef.observeSingleEvent(of: .value) { snapshot in
-            if let majorID = snapshot.value as? Int {
-                // Gọi fetchAppointments với majorID lấy được
-                GlobalService.shared.fetchAppointments(completion: { appointments in
-                    // Xử lý danh sách các cuộc hẹn nhận được
-                    for appointment in appointments {
-                        if appointment.doctorID == uid || appointment.doctorID == "00" {
-                            self.appointmentList.append(appointment)
-                        }
-                    }
-                    print(appointments)
-                    self.bookedPatientListTableView.reloadData()
-                }, majorID: majorID)
-                print(majorID)
-                self.bookedPatientListTableView.reloadData()
-                print(self.appointmentList)
-                print(self.appointmentList.count)
-            } else {
-                print("Failed to fetch majorID")
-                print("uid: \(uid)")
-                print(majorRef)
+        let majorID = Global.doctor?.majorID ?? 0
+        GlobalService.shared.fetchAppointments(completion: { appointments in
+            // Xử lý danh sách các cuộc hẹn nhận được
+            for appointment in appointments {
+                if appointment.doctorID == uid || appointment.doctorID == "00" {
+                    self.appointmentList.append(appointment)
+                }
             }
-        }
+            print(appointments)
+            self.bookedPatientListTableView.reloadData()
+        }, majorID: majorID)
+        print(majorID)
+        self.bookedPatientListTableView.reloadData()
+        print(self.appointmentList)
+        print(self.appointmentList.count)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

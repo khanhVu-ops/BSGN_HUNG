@@ -26,9 +26,9 @@ class DoctorHomeTableViewCell: UITableViewCell, SummaryMethod {
     }
 
 
-    func configureCell(avatarURL: String, name: String) {
-//        greetingDoctorLabel.text = name
-//        loadAvatarImage(from: avatarURL)
+    func configureCell(avatarURL: String?, name: String?) {
+        greetingDoctorLabel.text = name
+        doctorAvatarImageView.load(url: avatarURL, placeholderImage: UIImage(named: "default_doctor"))
     }
     
     private func loadAvatarImage(from url: String) {

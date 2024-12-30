@@ -37,6 +37,7 @@ class MyAppointmentsViewController: UIViewController {
     }
     public func configure(with appointmentID: String) {
         self.appointmentID = appointmentID
+        configureAppointmentPatient(with: appointmentID)
     }
     func configureAppointmentPatient(with ID: String) {
         self.appointmentID = ID
@@ -84,12 +85,18 @@ class MyAppointmentsViewController: UIViewController {
             switch result {
             case .success(let patient):
                 self.nameLabel.text = patient.name
-                self.avatarImageView.image = UIImage(named: patient.phoneNumber)
+                self.avatarImageView.loadAvatar(url: patient.avatar)
             case .failure(let error):
                 print(error)
             }
         }
     }
+    @IBAction func doneTapped(_ sender: Any) {
+    }
+    
+    @IBAction func cancelTapped(_ sender: Any) {
+    }
+    
     @IBAction func acceptTapped(_ sender: Any) {
         guard let doctorID = Auth.auth().currentUser?.uid else { return }
         print("")
@@ -160,6 +167,7 @@ class MyAppointmentsViewController: UIViewController {
                             
                 } else {
                     print("You are in another appointment")
+                    ToastApp.show("You are in another appointment")
                 }
                
                    

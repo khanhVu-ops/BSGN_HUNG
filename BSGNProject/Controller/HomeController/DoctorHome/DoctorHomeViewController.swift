@@ -26,9 +26,6 @@ class DoctorHomeViewController: UIViewController, UITableViewDataSource, UITable
 //        .doctorHomeAction
 //    ]
 //    private var avatarImageView: UIImageView?
-    
-    var doctorName: String = ""
-    var avatarURL: String = ""
     var selectedImage: UIImage? = UIImage(named: "default_doctor")
     lazy var imagePicker: ImagePicker = {
         let picker = ImagePicker(presentationController: self.navigationController, delegate: self)
@@ -83,7 +80,7 @@ class DoctorHomeViewController: UIViewController, UITableViewDataSource, UITable
         doctorHomeTableView.registerNib(cellType: ReuseArticleTableViewCell.self)
         doctorHomeTableView.backgroundColor = .clear
         setupUI()
-        fetchDoctorProfile()
+//        fetchDoctorProfile()
 
     }
     
@@ -98,22 +95,21 @@ class DoctorHomeViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     private func fetchDoctorProfile() {
-        guard let currentUser = Auth.auth().currentUser else {
+        guard let currentUser = Auth.auth().currentUser?.uid else {
             print("No user is logged in.")
             return
         }
-        
-        GlobalService.shared.fetchDoctorProfile(uid: currentUser.uid) { [weak self] result in
+        FirebaseDatabaseService.fetchDoctor(by: currentUser) { [weak self] result in
             switch result {
-            case .success(let (avatarURL, name)):
-                self?.avatarURL = avatarURL
-                self?.doctorName = name
-                DispatchQueue.main.async {
-                    self?.doctorHomeTableView.reloadData()
-                }
-                
+            case .success(let doctor):
+                print("Doctor fetched successfully: \(doctor)")
+                // Xử lý dữ liệu doctor, ví dụ hiển thị giao diện
+                Global.doctor = doctor
+                Global.role = .doctor
+                self?.doctorHomeTableView.reloadData()
             case .failure(let error):
-                print("Failed to fetch doctor profile: \(error.localizedDescription)")
+                print("Failed to fetch doctor: \(error.localizedDescription)")
+                
             }
         }
     }
@@ -150,7 +146,7 @@ class DoctorHomeViewController: UIViewController, UITableViewDataSource, UITable
             cell.doctorAvatarImageView.isUserInteractionEnabled = true
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapImageView))
             cell.doctorAvatarImageView.addGestureRecognizer(tapGesture)
-            cell.configureCell(avatarURL: avatarURL, name: doctorName)
+            cell.configureCell(avatarURL: Global.doctor?.avatar, name: Global.doctor?.lastName)
             cell.backgroundColor = .clear
             return cell
             
@@ -229,7 +225,13 @@ extension DoctorHomeViewController: ImagePickerDelegate {
             return
         }
         self.selectedImage = image
-        self.doctorHomeTableView.reloadData()
-
+        guard let imageData = image.jpegData(compressionQuality: 0.8) else {
+            return
+        }
+        Indicator.show()
+        GlobalService.shared.uploadAvatar(imageData: imageData, typeOfAccount: Global.role.name) { [weak self] error in
+            Indicator.hide()
+            self?.fetchDoctorProfile()
+        }
     }
 }
