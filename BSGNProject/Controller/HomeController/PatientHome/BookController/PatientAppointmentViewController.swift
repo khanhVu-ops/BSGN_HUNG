@@ -27,9 +27,13 @@ class PatientAppointmentViewController: UIViewController {
         super.viewDidLoad()
         waitingLabel.isHidden = true
         waitingImageView.isHidden = true
-        setup()
-
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setup()
+    }
+    
     func setup() {
         GlobalService.shared.fetchAppointmentsWithPatientID(completion: { [weak self] appointments in
             guard let self = self else { return }
@@ -44,7 +48,7 @@ class PatientAppointmentViewController: UIViewController {
             // Di chuyển logic kiểm tra vào đây
             DispatchQueue.main.async {
                 if !(self.appointments.isEmpty) {
-                    guard let appointment = self.appointments.first else { return }
+                    guard let appointment = self.appointments.last else { return }
                     if appointment.doctorID == "00" {
                         self.allHidden()
                         print("1=========1")
@@ -53,15 +57,16 @@ class PatientAppointmentViewController: UIViewController {
                         print("1=========2")
                         print(appointment)
                         self.nameLabel.text = appointment.doctorName
-                        self.majorLabel.text = appointment.specialty
-                        self.priceLabel.text = String(appointment.price)
+                        self.majorLabel.text = "Chuyên ngành: " + appointment.specialty
+                        self.priceLabel.text = "Giá khám: "+String(appointment.price)
+                        self.symtomsLabel.text = "Triệu chứng của bạn: " + appointment.symtoms
                         GlobalService.shared.loadDoctorWithID(doctorID: appointment.doctorID) { [weak self] result in
                             guard let self = self else { return }
                             switch result {
                             case .success(let doctor):
-                                self.workLabel.text = doctor.training_place
-                                self.graduatedLabel.text = doctor.degree
-                                self.avatarImageView.image = UIImage(named: doctor.avatar)
+                                self.workLabel.text = "Nơi làm việc: " + doctor.training_place
+                                self.graduatedLabel.text = "Tốt Nghiệp: "+doctor.education
+                                self.avatarImageView.load(url: doctor.avatar, placeholderImage: UIImage(named: "default_doctor"))
                             case .failure(let error):
                                 print(error)
                             }
@@ -93,7 +98,7 @@ class PatientAppointmentViewController: UIViewController {
                 case .success(let doctor):
                     self.workLabel.text = doctor.training_place
                     self.graduatedLabel.text = doctor.degree
-                    self.avatarImageView.image = UIImage(named: doctor.avatar)
+                    self.avatarImageView.load(url: doctor.avatar, placeholderImage: UIImage(named: "default_doctor"))
                 case .failure(let error):
                     print(error)
                 }
