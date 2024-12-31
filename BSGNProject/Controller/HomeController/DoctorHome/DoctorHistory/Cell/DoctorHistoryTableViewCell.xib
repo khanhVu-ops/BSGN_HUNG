@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -38,16 +39,16 @@
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fok-Nm-h7n">
-                                        <rect key="frame" x="120" y="0.0" width="179" height="152"/>
+                                        <rect key="frame" x="120" y="0.0" width="179" height="169"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hung nguyen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GFn-oG-SNt">
-                                                <rect key="frame" x="0.0" y="0.0" width="179" height="24"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="179" height="1"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l6c-Qw-0oe">
-                                                <rect key="frame" x="0.0" y="34" width="179" height="68"/>
+                                                <rect key="frame" x="0.0" y="11" width="179" height="68"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="jV5-qH-oFJ">
                                                         <rect key="frame" x="15" y="10" width="149" height="48"/>
@@ -99,28 +100,55 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BoG-nc-I5l">
-                                                <rect key="frame" x="0.0" y="112" width="179" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="jk9-S2-bHL"/>
-                                                </constraints>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled" image="person.fill.checkmark" catalog="system">
-                                                    <backgroundConfiguration key="background" strokeWidth="1">
-                                                        <color key="backgroundColor" name="IntroColor"/>
-                                                        <color key="strokeColor" name="MajorColor"/>
-                                                    </backgroundConfiguration>
-                                                    <attributedString key="attributedTitle">
-                                                        <fragment content="Hoàn thành">
-                                                            <attributes>
-                                                                <font key="NSFont" size="13" name="Helvetica"/>
-                                                                <font key="NSOriginalFont" size="12" name="Helvetica"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
-                                                    <color key="baseForegroundColor" name="MajorColor"/>
-                                                </buttonConfiguration>
-                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cxn-1z-z9W">
+                                                <rect key="frame" x="0.0" y="89" width="179" height="80"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hsC-Iq-XLg">
+                                                        <rect key="frame" x="0.0" y="0.0" width="179" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="ad9-YQ-yoz"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="filled" title="Đã huỷ" imagePadding="10">
+                                                            <imageReference key="image" image="person.fill.xmark" catalog="system" variableValue="1"/>
+                                                            <backgroundConfiguration key="background" strokeWidth="1">
+                                                                <color key="backgroundColor" name="IntroColor"/>
+                                                                <color key="strokeColor" systemColor="systemRedColor"/>
+                                                            </backgroundConfiguration>
+                                                            <color key="baseForegroundColor" systemColor="systemRedColor"/>
+                                                        </buttonConfiguration>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BoG-nc-I5l">
+                                                        <rect key="frame" x="0.0" y="40" width="179" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="jk9-S2-bHL"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="filled" image="person.fill.checkmark" catalog="system">
+                                                            <backgroundConfiguration key="background" strokeWidth="1">
+                                                                <color key="backgroundColor" name="IntroColor"/>
+                                                                <color key="strokeColor" name="MajorColor"/>
+                                                            </backgroundConfiguration>
+                                                            <attributedString key="attributedTitle">
+                                                                <fragment content="Đã h">
+                                                                    <attributes>
+                                                                        <font key="NSFont" size="12" name="Helvetica"/>
+                                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                    </attributes>
+                                                                </fragment>
+                                                                <fragment content="oàn thành">
+                                                                    <attributes>
+                                                                        <font key="NSFont" size="13" name="Helvetica"/>
+                                                                        <font key="NSOriginalFont" size="12" name="Helvetica"/>
+                                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                    </attributes>
+                                                                </fragment>
+                                                            </attributedString>
+                                                            <color key="baseForegroundColor" name="MajorColor"/>
+                                                        </buttonConfiguration>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -149,10 +177,12 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="avatarImageView" destination="rcE-cs-Nw4" id="DBL-nH-jw6"/>
                 <outlet property="borderView" destination="Yvn-QE-kNc" id="Up1-hm-rQU"/>
+                <outlet property="cancelledButton" destination="hsC-Iq-XLg" id="5PT-p4-LcF"/>
+                <outlet property="completedButton" destination="BoG-nc-I5l" id="Vcg-y4-qnQ"/>
                 <outlet property="infoView" destination="l6c-Qw-0oe" id="Flr-tX-ux1"/>
                 <outlet property="nameLabel" destination="GFn-oG-SNt" id="Zt8-eu-ueo"/>
-                <outlet property="stateButton" destination="BoG-nc-I5l" id="I8x-Un-dCf"/>
             </connections>
             <point key="canvasLocation" x="31.297709923664122" y="56.690140845070424"/>
         </tableViewCell>
@@ -162,6 +192,7 @@
         <image name="icn_clock" width="16" height="16"/>
         <image name="icn_schedule" width="16" height="16"/>
         <image name="person.fill.checkmark" catalog="system" width="128" height="89"/>
+        <image name="person.fill.xmark" catalog="system" width="128" height="89"/>
         <namedColor name="IntroColor">
             <color red="0.9570000171661377" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -170,6 +201,9 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
