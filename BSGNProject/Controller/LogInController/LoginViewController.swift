@@ -162,50 +162,25 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     func fetchDoctorAttributes(userId: String) {
         let ref = Database.database().reference()
-        ref.child("users").child("doctors").child(userId).observeSingleEvent(of: .value) { (snapshot) in
-            guard let data = snapshot.value as? [String: Any] else {
-                print("Doctor data not found.")
-                return
+        FirebaseDatabaseService.fetchDoctor(by: userId) { result in
+            switch result {
+            case .success(let doctor):
+                Global.doctor = doctor
+            case .failure(let failure):
+                print(failure.localizedDescription)
             }
-            
-            print("Doctor's attributes:")
-            print("First Name: \(data["firstName"] ?? "")")
-            print("Last Name: \(data["lastName"] ?? "")")
-            print("Date of Birth: \(data["dateOfBirth"] ?? "")")
-            print("Gender: \(data["gender"] ?? "")")
-            print("Phone Number: \(data["phoneNumber"] ?? "")")
-            print("Uni/College: \(data["education"] ?? "")")
-            print("District: \(data["district"] ?? "")")
-            print("City: \(data["city"] ?? "")")
-            print("Street: \(data["street"] ?? "")")
-            print("Address: \(data["address"] ?? "")")
-            print("Degree: \(data["degree"] ?? "")")
-            print("Training Place: \(data["training_place"] ?? "")")
-            print("Major: \(data["major"] ?? "")")
-            print("Avatar: \(data["avatar"] ?? "")")
-            print("Balance: \(data["balance"] ?? "")")
         }
     }
 
     func fetchPatientAttributes(userId: String) {
         let ref = Database.database().reference()
-        ref.child("users").child("patients").child(userId).observeSingleEvent(of: .value) { (snapshot) in
-            guard let data = snapshot.value as? [String: Any] else {
-                print("Patient data not found.")
-                return
+        FirebaseDatabaseService.fetchPatient(by: userId) { result in
+            switch result {
+            case .success(let patient):
+                Global.patient = patient
+            case .failure(let failure):
+                print(failure.localizedDescription)
             }
-            
-            print("Patient's attributes:")
-            print("First Name: \(data["name"] ?? "")")
-            print("Last Name: \(data["lastName"] ?? "")")
-            print("Date of Birth: \(data["dateOfBirth"] ?? "")")
-            print("Gender: \(data["sex"] ?? "")")
-            print("Phone Number: \(data["phoneNumber"] ?? "")")
-            print("District: \(data["district"] ?? "")")
-            print("Province: \(data["province"] ?? "")")
-            print("xa: \(data["xa"] ?? "")")
-            print("Address: \(data["address"] ?? "")")
-            print("Blood Name: \(data["blood"] ?? "")")
         }
     }
 }
