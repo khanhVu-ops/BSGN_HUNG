@@ -10,6 +10,7 @@ import FirebaseAuth
 
 class PatientAppointmentViewController: UIViewController {
 
+    @IBOutlet weak var doctorLb: UILabel!
     @IBOutlet weak var waitingLabel: UILabel!
     @IBOutlet weak var waitingImageView: UIImageView!
     @IBOutlet weak var priceLabel: UILabel!
@@ -118,6 +119,8 @@ class PatientAppointmentViewController: UIViewController {
         avatarImageView.isHidden = true
         waitingLabel.isHidden = false
         waitingImageView.isHidden = false
+        phoneNumberLabel.isHidden = true
+        doctorLb.isHidden = true
     }
     func allVisible() {
         symtomsLabel.isHidden = false
@@ -127,7 +130,9 @@ class PatientAppointmentViewController: UIViewController {
         priceLabel.isHidden = false
         workLabel.isHidden = false
         graduatedLabel.isHidden = false
+        phoneNumberLabel.isHidden = false
         avatarImageView.isHidden = false
+        doctorLb.isHidden = false
         waitingLabel.isHidden = true
         waitingImageView.isHidden = true
     }
