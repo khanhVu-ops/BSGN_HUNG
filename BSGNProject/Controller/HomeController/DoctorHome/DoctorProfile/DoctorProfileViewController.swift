@@ -30,7 +30,7 @@ class DoctorProfileViewController: UIViewController {
     }
 
     private func signOut() {
-        CommonAlertViewController.present(.init(title: "Đăng xuất", subtitle: "Bạn có chắc muốn đăng xuất!")) { [weak self] in
+        CommonAlertView.present(.init(title: "Đăng xuất", subtitle: "Bạn có chắc muốn đăng xuất!")) { [weak self] in
             do {
                 try Auth.auth().signOut()
                 print("User logged out successfully.")

@@ -88,7 +88,7 @@ open class ImagePicker: NSObject {
     
     private func handleAccessDenied() {
         DispatchQueue.main.async {
-            CommonAlertViewController.present(.init(title: "Cảnh báo", subtitle: "Để chụp ảnh, bạn cần cấp quyền cho ứng dụng truy cập camera của thiết bị!", doneTitle: "Cài đặt")) {
+            CommonAlertView.present(.init(title: "Cảnh báo", subtitle: "Để chụp ảnh, bạn cần cấp quyền cho ứng dụng truy cập camera của thiết bị!", doneTitle: "Cài đặt")) {
                 openSettings()
             }
         }

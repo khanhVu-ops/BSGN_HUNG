@@ -82,7 +82,7 @@ class PositionViewController: UIViewController {
 //        self.navigationController?.pushViewController(mapVC, animated: true)
     }
     func showSuccessPopup() {
-        CommonAlertViewController.present(.init(title: "Thông báo", subtitle: "Đăng ký khám thành công!", note: "Vui lòng chờ cho tới khi có bác sỹ nhận.")) {
+        CommonAlertView.present(.init(title: "Thông báo", subtitle: "Đăng ký khám thành công!", note: "Vui lòng chờ cho tới khi có bác sỹ nhận.")) {
             let myappointmentVC = PatientAppointmentViewController()
             self.navigationController?.pushViewController(myappointmentVC, animated: true)
             myappointmentVC.setupNavigationBar(with: "Thông tin bác sỹ", with: false)

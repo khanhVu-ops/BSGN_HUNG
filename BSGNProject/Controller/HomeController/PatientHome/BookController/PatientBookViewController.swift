@@ -40,6 +40,7 @@ class PatientBookViewController: UIViewController, UIPickerViewDelegate, UIPicke
         setUpTextView()
     }
     private func setupUI() {
+        GlobalService.appointmentData["specialtyID"] = 1 // dèfault = 1
         majorPickerView.delegate = self
         majorPickerView.dataSource = self
         majorTextField.inputView = majorPickerView

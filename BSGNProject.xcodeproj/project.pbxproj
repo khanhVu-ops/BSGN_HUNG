@@ -165,8 +165,6 @@
 		336CFAB12D19BA2D004487E6 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336CFAB02D19BA2D004487E6 /* ImagePicker.swift */; };
 		336CFAB42D19BA35004487E6 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336CFAB22D19BA35004487E6 /* Typealiases.swift */; };
 		336CFAB52D19BA35004487E6 /* Userdefault+PropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336CFAB32D19BA35004487E6 /* Userdefault+PropertyWrapper.swift */; };
-		336CFAB92D19BA3A004487E6 /* CommonAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336CFAB62D19BA3A004487E6 /* CommonAlertViewController.swift */; };
-		336CFABA2D19BA3A004487E6 /* CommonAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 336CFAB72D19BA3A004487E6 /* CommonAlertViewController.xib */; };
 		336CFABC2D19BA5D004487E6 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336CFABB2D19BA5D004487E6 /* BaseTableViewCell.swift */; };
 		336CFABF2D19D7FA004487E6 /* UView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336CFABE2D19D7FA004487E6 /* UView+.swift */; };
 		336CFAC12D19DA35004487E6 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336CFAC02D19DA34004487E6 /* UIColor+.swift */; };
@@ -176,6 +174,10 @@
 		337FF7FB2D19EBEF0069A385 /* CommonHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337FF7FA2D19EBEF0069A385 /* CommonHeaderView.swift */; };
 		337FF7FE2D19EC6F0069A385 /* DoctorProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 337FF7FD2D19EC6F0069A385 /* DoctorProfileTableViewCell.xib */; };
 		337FF7FF2D19EC6F0069A385 /* DoctorProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337FF7FC2D19EC6F0069A385 /* DoctorProfileTableViewCell.swift */; };
+		339FEB622D23AED3001E2353 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339FEB612D23AED3001E2353 /* UIButton+.swift */; };
+		33A932942D23AC5100D1FCF6 /* BaseAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A932902D23AC5100D1FCF6 /* BaseAlertView.swift */; };
+		33A932952D23AC5100D1FCF6 /* CancellableAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A932912D23AC5100D1FCF6 /* CancellableAlertView.swift */; };
+		33A932962D23AC5100D1FCF6 /* CommonAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A932922D23AC5100D1FCF6 /* CommonAlertView.swift */; };
 		33B7CA842D1B1EC4006C54F1 /* BalanceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33B7CA832D1B1EC4006C54F1 /* BalanceViewController.xib */; };
 		33B7CA852D1B1EC4006C54F1 /* BalanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B7CA822D1B1EC4006C54F1 /* BalanceViewController.swift */; };
 		33B7CA892D1B1F27006C54F1 /* BalanceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33B7CA882D1B1F27006C54F1 /* BalanceTableViewCell.xib */; };
@@ -440,8 +442,6 @@
 		336CFAB02D19BA2D004487E6 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		336CFAB22D19BA35004487E6 /* Typealiases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
 		336CFAB32D19BA35004487E6 /* Userdefault+PropertyWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Userdefault+PropertyWrapper.swift"; sourceTree = "<group>"; };
-		336CFAB62D19BA3A004487E6 /* CommonAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonAlertViewController.swift; sourceTree = "<group>"; };
-		336CFAB72D19BA3A004487E6 /* CommonAlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommonAlertViewController.xib; sourceTree = "<group>"; };
 		336CFABB2D19BA5D004487E6 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		336CFABE2D19D7FA004487E6 /* UView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UView+.swift"; sourceTree = "<group>"; };
 		336CFAC02D19DA34004487E6 /* UIColor+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
@@ -451,6 +451,10 @@
 		337FF7FA2D19EBEF0069A385 /* CommonHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonHeaderView.swift; sourceTree = "<group>"; };
 		337FF7FC2D19EC6F0069A385 /* DoctorProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorProfileTableViewCell.swift; sourceTree = "<group>"; };
 		337FF7FD2D19EC6F0069A385 /* DoctorProfileTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoctorProfileTableViewCell.xib; sourceTree = "<group>"; };
+		339FEB612D23AED3001E2353 /* UIButton+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
+		33A932902D23AC5100D1FCF6 /* BaseAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAlertView.swift; sourceTree = "<group>"; };
+		33A932912D23AC5100D1FCF6 /* CancellableAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancellableAlertView.swift; sourceTree = "<group>"; };
+		33A932922D23AC5100D1FCF6 /* CommonAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonAlertView.swift; sourceTree = "<group>"; };
 		33B7CA822D1B1EC4006C54F1 /* BalanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceViewController.swift; sourceTree = "<group>"; };
 		33B7CA832D1B1EC4006C54F1 /* BalanceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BalanceViewController.xib; sourceTree = "<group>"; };
 		33B7CA872D1B1F27006C54F1 /* BalanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceTableViewCell.swift; sourceTree = "<group>"; };
@@ -596,6 +600,7 @@
 		2C2763F72C748D8B0022192D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				339FEB612D23AED3001E2353 /* UIButton+.swift */,
 				8485D7CE2D1C2474006F0075 /* LocationManager.swift */,
 				8485D7CC2D1C21C3006F0075 /* UITextView+.swift */,
 				336CFAB22D19BA35004487E6 /* Typealiases.swift */,
@@ -993,21 +998,12 @@
 		336CFAA52D19B8F8004487E6 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				336CFAB82D19BA3A004487E6 /* CommonAlert */,
+				33A932932D23AC5100D1FCF6 /* CommonAlert */,
 				336CFABB2D19BA5D004487E6 /* BaseTableViewCell.swift */,
 				336CFAA72D19B8FE004487E6 /* BaseNavigationController.swift */,
 				336CFAA62D19B8FE004487E6 /* BaseViewController.swift */,
 			);
 			path = Base;
-			sourceTree = "<group>";
-		};
-		336CFAB82D19BA3A004487E6 /* CommonAlert */ = {
-			isa = PBXGroup;
-			children = (
-				336CFAB62D19BA3A004487E6 /* CommonAlertViewController.swift */,
-				336CFAB72D19BA3A004487E6 /* CommonAlertViewController.xib */,
-			);
-			path = CommonAlert;
 			sourceTree = "<group>";
 		};
 		337FF7F62D19EB3C0069A385 /* Cell */ = {
@@ -1031,6 +1027,17 @@
 				335B9AE22D19EFCA004F598C /* DoctorProfileViewController.xib */,
 			);
 			path = DoctorProfile;
+			sourceTree = "<group>";
+		};
+		33A932932D23AC5100D1FCF6 /* CommonAlert */ = {
+			isa = PBXGroup;
+			children = (
+				33A932902D23AC5100D1FCF6 /* BaseAlertView.swift */,
+				33A932912D23AC5100D1FCF6 /* CancellableAlertView.swift */,
+				33A932922D23AC5100D1FCF6 /* CommonAlertView.swift */,
+			);
+			name = CommonAlert;
+			path = ../../../../AdmicroHybridEvent/AdmicroHybridEvent/Helper/CommonView/CommonAlert;
 			sourceTree = "<group>";
 		};
 		33B7CA812D1B1EAD006C54F1 /* Balances */ = {
@@ -1228,7 +1235,6 @@
 				0E39EBA92CB3792900E007AC /* RegisterViewController.xib in Resources */,
 				2C67BE4F2C76D7C3004ED1C2 /* DetailTableViewCell.xib in Resources */,
 				2C67BE542C76E154004ED1C2 /* ArticleListViewController.xib in Resources */,
-				336CFABA2D19BA3A004487E6 /* CommonAlertViewController.xib in Resources */,
 				0E689F752D1111CE00737853 /* NewPatientFormViewController.xib in Resources */,
 				0EBAB09C2D002831004A54A4 /* NewDoctorFormTableViewCell.xib in Resources */,
 				2CE948AB2C6F5C2500BFD7D9 /* ArticleCollectionViewCell.xib in Resources */,
@@ -1343,6 +1349,7 @@
 				0E39EBAA2CB3792900E007AC /* RegisterViewController.swift in Sources */,
 				0E431B8A2CC74B5E00BCBE26 /* DoctorHomeTableViewCell.swift in Sources */,
 				0E03839D2CC89862005E3152 /* BookedPatientListViewController.swift in Sources */,
+				33A932962D23AC5100D1FCF6 /* CommonAlertView.swift in Sources */,
 				2C2763FB2C749AEB0022192D /* CustomLayout.swift in Sources */,
 				335B9AE42D19EFCA004F598C /* DoctorProfileViewController.swift in Sources */,
 				336CFAA82D19B8FE004487E6 /* BaseViewController.swift in Sources */,
@@ -1373,6 +1380,7 @@
 				336CFAC12D19DA35004487E6 /* UIColor+.swift in Sources */,
 				33B7CA852D1B1EC4006C54F1 /* BalanceViewController.swift in Sources */,
 				336CFABF2D19D7FA004487E6 /* UView+.swift in Sources */,
+				33A932942D23AC5100D1FCF6 /* BaseAlertView.swift in Sources */,
 				2C866CF22C8A95F500BBB664 /* ExtensionForCell.swift in Sources */,
 				0EB25C152CD87F5700F0EDFE /* ResultsViewController.swift in Sources */,
 				0ECFD9812CAD2CDC009AE439 /* MoreTabTableViewCell.swift in Sources */,
@@ -1392,6 +1400,7 @@
 				2C3155492C6F48FD00E9A4AF /* HomeData.swift in Sources */,
 				2C1BBC3A2C801B2E00F9D212 /* PersonalInformation.swift in Sources */,
 				84841A252D22B9D300B6637C /* Indicator.swift in Sources */,
+				33A932952D23AC5100D1FCF6 /* CancellableAlertView.swift in Sources */,
 				0ECFD9792CACF083009AE439 /* MoreTabViewController.swift in Sources */,
 				33B7CA8E2D1B2039006C54F1 /* TransactionTableViewCell.swift in Sources */,
 				335B9AE92D19F413004F598C /* DoctorHistoryViewController.swift in Sources */,
@@ -1415,6 +1424,7 @@
 				2C31554F2C6F4E9100E9A4AF /* DoctorViewModel.swift in Sources */,
 				0E689F7B2D111A0500737853 /* File.swift in Sources */,
 				2CE948AA2C6F5C2500BFD7D9 /* ArticleCollectionViewCell.swift in Sources */,
+				339FEB622D23AED3001E2353 /* UIButton+.swift in Sources */,
 				335D4C5B2D1DAE440057A6F4 /* SplashViewController.swift in Sources */,
 				8485D7CF2D1C2474006F0075 /* LocationManager.swift in Sources */,
 				2C358B6B2C78444F00336C93 /* TextTableViewCell.swift in Sources */,
@@ -1431,7 +1441,6 @@
 				2C31553F2C6F40D300E9A4AF /* HomeViewController.swift in Sources */,
 				2C3155452C6F473F00E9A4AF /* HomeService.swift in Sources */,
 				2C62C60E2C6B42BC005DA15E /* LoginViewController.swift in Sources */,
-				336CFAB92D19BA3A004487E6 /* CommonAlertViewController.swift in Sources */,
 				337FF7F92D19EB8D0069A385 /* ProfileEnum.swift in Sources */,
 				0EBEAA032D12B5F500D4606E /* PatientAppointmentViewController.swift in Sources */,
 				336CFAA32D19B8D5004487E6 /* Global.swift in Sources */,

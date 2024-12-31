@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class MyAppointmentsViewController: UIViewController {
     
@@ -32,9 +33,28 @@ class MyAppointmentsViewController: UIViewController {
     private func setup() {
         infoBorderView.backgroundColor = UIColor(hex: "#D7E6DF")
         timeBorderView.backgroundColor = UIColor(hex: "#D7E6DF")
-        cancelButton.isHidden = true
-        doneButton.isHidden = true
     }
+    
+    func updateUI() {
+        self.acceptButton.layer.borderColor = mainColor.cgColor
+        self.acceptButton.layer.borderWidth = 1
+        self.acceptButton.layer.cornerRadius = 5
+        cancelButton.isHidden = appointment?.status != "accepted"
+        doneButton.isHidden = appointment?.status != "accepted"
+        if appointment?.status == "accepted" {
+            self.acceptButton.isEnabled = false
+            self.acceptButton.setTitle("Đang thực hiện", for: .normal)
+            self.acceptButton.backgroundColor = .white
+            self.acceptButton.layer.borderColor = mainColor.cgColor
+            self.acceptButton.layer.borderWidth = 1
+            self.acceptButton.layer.cornerRadius = 5
+        } else {
+            self.acceptButton.setTitle("Nhận ngay", for: .normal)
+            self.acceptButton.backgroundColor = mainColor
+            self.acceptButton.isEnabled = true
+        }
+    }
+    
     public func configure(with appointmentID: String) {
         self.appointmentID = appointmentID
         configureAppointmentPatient(with: appointmentID)
@@ -53,23 +73,7 @@ class MyAppointmentsViewController: UIViewController {
                 self.appointment = appointment
                 
                 // Xử lý liên quan đến `accepted` sau khi isBooked đã được cập nhật
-                guard let accepted = self.isBooked else {
-                    print("=______________")
-                    return
-                }
-                if accepted == "accepted" {
-                    self.acceptButton.setTitle("Đang thực hiện", for: .normal)
-                    self.acceptButton.backgroundColor = .white
-                    self.acceptButton.layer.borderColor = mainColor.cgColor
-                    self.acceptButton.layer.borderWidth = 1
-                    self.acceptButton.layer.cornerRadius = 5
-                    self.acceptButton.isEnabled = false
-                    self.doneButton.isHidden = false
-                    self.cancelButton.isHidden = false
-                    print("-====+++++")
-                } else {
-                    print("NOOOOOOOOO")
-                }
+                self.updateUI()
                 
             case .failure(let error):
                 print(error)
@@ -91,10 +95,155 @@ class MyAppointmentsViewController: UIViewController {
             }
         }
     }
+
+    func showAlertCompleted() {
+        // Tạo và hiển thị SuccessPopupView
+        let popupView = PopUpView(frame: CGRect(x: 40, y: (self.view.frame.height) / 2 - 100, width: (self.view.frame.width) - 80, height: 250))
+        
+        // Đặt closure onConfirm để xử lý khi bấm nút "Xác nhận"
+        popupView.onConfirm = {
+            // Ẩn popup khi bấm nút xác nhận
+            popupView.removeFromSuperview()
+        }
+        
+        // Thêm popup vào view chính
+        self.view.addSubview(popupView)
+    }
+    
+    func showAlertCancelled() {
+        let subtitle = UILabel.build(font: .systemFont(ofSize: 15, weight: .medium), color: .darkGray, lines: 2, alignment: .center)
+        subtitle.text = "Cancel Appointment"
+        CancellableAlertView.present(.init(title: "Alert!", content: subtitle, cancelTitle: "Oke", cancelColor: .red)) { [weak self] in
+            mainAsync {
+                self?.navigationController?.popViewController(animated: true)
+            }
+        }
+    }
+    
     @IBAction func doneTapped(_ sender: Any) {
+        // Hoan thanh
+        guard var appointment = self.appointment else { return }
+        appointment.status = "completed" // Cập nhật trạng thái cuộc hẹn
+        
+        guard var doctor = Global.doctor else { return }
+        doctor.isInAppointment = 0
+        
+        // Load thông tin patient từ appointment
+        GlobalService.shared.loadPatientWithID(patientID: appointment.patientID) { [weak self] patientResult in
+            switch patientResult {
+            case .success(let patient):
+                // Tạo patient mới với trạng thái đã trong cuộc hẹn
+                var updatedPatient = patient
+                updatedPatient.isInAppointment = 0 // Đánh dấu patient đang trong cuộc hẹn
+                
+                // Cập nhật trạng thái của doctor và patient lên Firebase
+                let dispatchGroup = DispatchGroup()
+                
+                // Cập nhật doctor
+                dispatchGroup.enter()
+                GlobalService.shared.updateDoctorInfo(doctor: doctor) { doctorUpdateResult in
+                    Global.doctor = doctor
+                    switch doctorUpdateResult {
+                    case .success:
+                        print("Doctor updated successfully.")
+                    case .failure(let error):
+                        print("Failed to update doctor: \(error.localizedDescription)")
+                    }
+                    dispatchGroup.leave()
+                }
+                
+                // Cập nhật patient
+                dispatchGroup.enter()
+                GlobalService.shared.updatePatientInfo(patient: updatedPatient) { patientUpdateResult in
+                    switch patientUpdateResult {
+                    case .success:
+                        print("Patient updated successfully.")
+                    case .failure(let error):
+                        print("Failed to update patient: \(error.localizedDescription)")
+                    }
+                    dispatchGroup.leave()
+                }
+                
+                // Chờ cả doctor và patient được cập nhật xong
+                dispatchGroup.notify(queue: .main) {
+                    print("Both doctor and patient updated successfully.")
+                    
+                    // Cập nhật trạng thái cuộc hẹn trong Firebase
+                    let ref = Database.database().reference().child("appointments").child(appointment.id)
+                    ref.setValue(appointment.toDictionary())
+                    print("Appointment status updated successfully.")
+                    mainAsyncAfter(0.5) {
+                        self?.showAlertCompleted()
+                    }
+                }
+            case .failure(let error):
+                print("Failed to load patient: \(error.localizedDescription)")
+            }
+        }
     }
     
     @IBAction func cancelTapped(_ sender: Any) {
+        // Bsi huy
+        
+        guard var appointment = self.appointment else { return }
+        appointment.status = "cancelled" // Cập nhật trạng thái cuộc hẹn
+        
+        guard var doctor = Global.doctor else { return }
+        doctor.isInAppointment = 0
+        
+        // Load thông tin patient từ appointment
+        GlobalService.shared.loadPatientWithID(patientID: appointment.patientID) { [weak self] patientResult in
+            switch patientResult {
+            case .success(let patient):
+                // Tạo patient mới với trạng thái đã trong cuộc hẹn
+                var updatedPatient = patient
+                updatedPatient.isInAppointment = 0 // Đánh dấu patient đang trong cuộc hẹn
+                
+                // Cập nhật trạng thái của doctor và patient lên Firebase
+                let dispatchGroup = DispatchGroup()
+                
+                // Cập nhật doctor
+                dispatchGroup.enter()
+                GlobalService.shared.updateDoctorInfo(doctor: doctor) { doctorUpdateResult in
+                    Global.doctor = doctor
+                    switch doctorUpdateResult {
+                    case .success:
+                        print("Doctor updated successfully.")
+                    case .failure(let error):
+                        print("Failed to update doctor: \(error.localizedDescription)")
+                    }
+                    dispatchGroup.leave()
+                }
+                
+                // Cập nhật patient
+                dispatchGroup.enter()
+                GlobalService.shared.updatePatientInfo(patient: updatedPatient) { patientUpdateResult in
+                    switch patientUpdateResult {
+                    case .success:
+                        print("Patient updated successfully.")
+                    case .failure(let error):
+                        print("Failed to update patient: \(error.localizedDescription)")
+                    }
+                    dispatchGroup.leave()
+                }
+                
+                // Chờ cả doctor và patient được cập nhật xong
+                dispatchGroup.notify(queue: .main) {
+                    print("Both doctor and patient updated successfully.")
+                    
+                    // Cập nhật trạng thái cuộc hẹn trong Firebase
+                    // Cập nhật trạng thái cuộc hẹn trong Firebase
+                    let ref = Database.database().reference().child("appointments").child(appointment.id)
+                    ref.setValue(appointment.toDictionary())
+                    print("Appointment status updated successfully.")
+                    mainAsyncAfter(0.5) {
+                        self?.showAlertCancelled()
+                    }
+                }
+            case .failure(let error):
+                print("Failed to load patient: \(error.localizedDescription)")
+            }
+        }
     }
     
     @IBAction func acceptTapped(_ sender: Any) {
@@ -118,7 +267,7 @@ class MyAppointmentsViewController: UIViewController {
                     updatedDoctor.isInAppointment = 1 // Đánh dấu doctor đang trong cuộc hẹn
                     
                     // Load thông tin patient từ appointment
-                    GlobalService.shared.loadPatientWithID(patientID: appointment.patientID) { patientResult in
+                    GlobalService.shared.loadPatientWithID(patientID: appointment.patientID) { [weak self] patientResult in
                         switch patientResult {
                         case .success(let patient):
                             // Tạo patient mới với trạng thái đã trong cuộc hẹn
@@ -157,8 +306,10 @@ class MyAppointmentsViewController: UIViewController {
                                 print("Both doctor and patient updated successfully.")
                                 
                                 // Cập nhật trạng thái cuộc hẹn trong Firebase
+                                self?.appointment = appointment
                                 GlobalService.shared.updateAppointmentStatus(appointment: appointment, doctorID: doctor.id, doctorName: "\(doctor.firstName) \(doctor.lastName)")
-                                print("Appointment status updated successfully.")
+                                ToastApp.show("Appointment status updated successfully.")
+                                self?.updateUI()
                             }
                         case .failure(let error):
                             print("Failed to load patient: \(error.localizedDescription)")

@@ -134,26 +134,36 @@ class BookedPatientListTableViewCell: BaseTableViewCell, SummaryMethod {
         symtomsLabel.text = appointment.symtoms
         majorLabel.text = appointment.specialty
         fullNameLabel.text = appointment.patientName
-        
-        GlobalService.shared.loadDoctorWithID(doctorID: Auth.auth().currentUser!.uid) { result in
-            switch result {
-            case .success(let doctor):
-                if doctor.isInAppointment == 1 {
-                    if appointment.status == "accepted" {
-                        self.bookButton.setTitle("Đang thực hiện", for: .normal)
-                        self.bookButton.backgroundColor = .white
-                        self.bookButton.layer.borderColor = mainColor.cgColor
-                        self.bookButton.layer.borderWidth = 1
-                        self.bookButton.layer.cornerRadius = 5
-                    } else {
-                        self.bookButton.backgroundColor = mainColor
-                        self.bookButton.isEnabled = false
-                    }
-                }
-            case .failure(let error):
-                print(error)
-            }
-            
+        if appointment.doctorID == Global.doctor?.id {
+            self.bookButton.setTitle("Đang thực hiện", for: .normal)
+            self.bookButton.backgroundColor = .white
+            self.bookButton.layer.borderColor = mainColor.cgColor
+            self.bookButton.layer.borderWidth = 1
+            self.bookButton.layer.cornerRadius = 5
+            self.bookButton.isEnabled = false
+        } else {
+            self.bookButton.backgroundColor = mainColor
+            self.bookButton.isEnabled = Global.doctor?.isInAppointment == 0
         }
+//        GlobalService.shared.loadDoctorWithID(doctorID: Auth.auth().currentUser!.uid) { result in
+//            switch result {
+//            case .success(let doctor):
+//                if doctor.isInAppointment == 1 {
+//                    if appointment.status == "accepted" {
+//                        self.bookButton.setTitle("Đang thực hiện", for: .normal)
+//                        self.bookButton.backgroundColor = .white
+//                        self.bookButton.layer.borderColor = mainColor.cgColor
+//                        self.bookButton.layer.borderWidth = 1
+//                        self.bookButton.layer.cornerRadius = 5
+//                    } else {
+//                        self.bookButton.backgroundColor = mainColor
+//                        self.bookButton.isEnabled = false
+//                    }
+//                }
+//            case .failure(let error):
+//                print(error)
+//            }
+//            
+//        }
     }
 }

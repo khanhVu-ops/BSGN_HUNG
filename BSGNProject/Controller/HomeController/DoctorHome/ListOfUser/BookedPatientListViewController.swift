@@ -20,10 +20,14 @@ class BookedPatientListViewController: UIViewController, UITableViewDelegate, UI
         bookedPatientListTableView.delegate = self
         bookedPatientListTableView.dataSource = self
         bookedPatientListTableView.registerNib(cellType: BookedPatientListTableViewCell.self)
-        setup()
-        print(appointmentList)
-        self.navigationController?.navigationBar.isHidden = false
+        
 //        view.bringSubviewToFront(self.navigationController?.navigationBar ?? UINavigationBar())
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setup()
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
 
     func setup() {
@@ -58,12 +62,12 @@ class BookedPatientListViewController: UIViewController, UITableViewDelegate, UI
 //                print(majorRef)
 //            }
 //        }
-        
+        self.appointmentList = []
         let majorID = Global.doctor?.majorID ?? 0
         GlobalService.shared.fetchAppointments(completion: { appointments in
             // Xử lý danh sách các cuộc hẹn nhận được
             for appointment in appointments {
-                if appointment.doctorID == uid || appointment.doctorID == "00" {
+                if (appointment.doctorID == uid && (appointment.status != "cancelled" && appointment.status != "completed") ) || appointment.doctorID == "00" {
                     self.appointmentList.append(appointment)
                 }
             }

@@ -119,7 +119,7 @@ private extension LocationManager {
     }
     
     func showAlertRequiredLocationService() {
-        CommonAlertViewController.present(.init(title: "Location Service Required!",
+        CommonAlertView.present(.init(title: "Location Service Required!",
                                                 subtitle: "Please enter settings to enable location service to use app",
                                                 cancelTitle: "Cancel",
                                                 doneTitle: "Open Settings")) {
