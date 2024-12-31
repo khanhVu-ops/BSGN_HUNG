@@ -17,6 +17,7 @@ class PatientAppointmentViewController: UIViewController {
     @IBOutlet weak var graduatedLabel: UILabel!
     @IBOutlet weak var majorLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var symtomsLabel: UILabel!
     @IBOutlet weak var cancelButton: UIButton!
@@ -66,6 +67,7 @@ class PatientAppointmentViewController: UIViewController {
                             case .success(let doctor):
                                 self.workLabel.text = "Nơi làm việc: " + doctor.training_place
                                 self.graduatedLabel.text = "Tốt Nghiệp: "+doctor.education
+                                self.phoneNumberLabel.text = "Số điện thoại: "+doctor.phoneNumber
                                 self.avatarImageView.load(url: doctor.avatar, placeholderImage: UIImage(named: "default_doctor"))
                             case .failure(let error):
                                 print(error)
@@ -82,29 +84,29 @@ class PatientAppointmentViewController: UIViewController {
         }, patient: Auth.auth().currentUser!.uid)
     }
 
-    func getAppointment(appointment: Appointment) {
-
-        if appointment.doctorID == "00" {
-            allHidden()
-        } else {
-            allVisible()
-            print(appointment)
-            nameLabel.text = appointment.doctorName
-            majorLabel.text = appointment.specialty
-            priceLabel.text = String(appointment.price)
-            GlobalService.shared.loadDoctorWithID(doctorID: appointment.doctorID) { [weak self] result in
-                guard let self else { return }
-                switch result {
-                case .success(let doctor):
-                    self.workLabel.text = doctor.training_place
-                    self.graduatedLabel.text = doctor.degree
-                    self.avatarImageView.load(url: doctor.avatar, placeholderImage: UIImage(named: "default_doctor"))
-                case .failure(let error):
-                    print(error)
-                }
-            }
-        }
-    }
+//    func getAppointment(appointment: Appointment) {
+//
+//        if appointment.doctorID == "00" {
+//            allHidden()
+//        } else {
+//            allVisible()
+//            print(appointment)
+//            nameLabel.text = appointment.doctorName
+//            majorLabel.text = appointment.specialty
+//            priceLabel.text = String(appointment.price)
+//            GlobalService.shared.loadDoctorWithID(doctorID: appointment.doctorID) { [weak self] result in
+//                guard let self else { return }
+//                switch result {
+//                case .success(let doctor):
+//                    self.workLabel.text = doctor.training_place
+//                    self.graduatedLabel.text = doctor.degree
+//                    self.avatarImageView.load(url: doctor.avatar, placeholderImage: UIImage(named: "default_doctor"))
+//                case .failure(let error):
+//                    print(error)
+//                }
+//            }
+//        }
+//    }
     func allHidden() {
         symtomsLabel.isHidden = true
         cancelButton.isHidden = true

@@ -29,7 +29,28 @@ class BookedPatientListTableViewCell: BaseTableViewCell, SummaryMethod {
     }
 
     @IBAction func didTapAccept(_ sender: Any) {
+        guard let id = appointment?.id else {
+            ToastApp.show("Không tìm thấy cuộc hẹn")
+            return
+        }
         // Lấy ID của doctor hiện tại từ Firebase Auth
+        GlobalService.shared.loadAppointmentWithID(appointmentID: id) { result in
+            switch result {
+            case .success(let appointment):
+                self.appointment = appointment
+                if appointment.doctorID == "00" {
+                    self.acceptAppointment()
+                } else {
+                    ToastApp.show("Cuộc hẹn đã được nhận bởi bác sĩ khác")
+                }
+            case .failure(let failure):
+                print(failure.localizedDescription)
+            }
+        }
+        
+    }
+    
+    func acceptAppointment() {
         guard let doctorID = Auth.auth().currentUser?.uid else { return }
         
         // Load thông tin doctor từ Firebase

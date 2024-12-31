@@ -15,6 +15,8 @@ class DoctorHistoryTableViewCell: BaseTableViewCell {
     @IBOutlet weak var infoView: UIView!
     @IBOutlet weak var cancelledButton: UIButton!
     @IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var sysmlabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         borderView.backgroundColor = UIColor(hex: "#D7E6DF")
@@ -29,5 +31,7 @@ class DoctorHistoryTableViewCell: BaseTableViewCell {
         cancelledButton.isHidden = item.status != "cancelled"
         nameLabel.text = item.patientName
         avatarImageView.loadAvatar(url: "")
+        sysmlabel.text = "Triệu chứng: " + item.symtoms
+        phoneLabel.text = "Địa chỉ: " + item.position
     }
 }

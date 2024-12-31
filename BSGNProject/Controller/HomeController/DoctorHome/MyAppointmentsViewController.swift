@@ -21,6 +21,8 @@ class MyAppointmentsViewController: UIViewController {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var infoBorderView: UIView!
     @IBOutlet weak var timeBorderView: UIView!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
     var isBooked: String?
     var appointmentID: String?
     var appointment: Appointment?
@@ -89,6 +91,9 @@ class MyAppointmentsViewController: UIViewController {
             switch result {
             case .success(let patient):
                 self.nameLabel.text = patient.name
+                self.addressLabel.text = "Địa chỉ: "+patient.address
+                self.phoneLabel.text = "Số điện thoại: "+patient.phoneNumber
+                self.ageLabel.text = "Ngày sinh: "+patient.dateOfBirth
                 self.avatarImageView.loadAvatar(url: patient.avatar)
             case .failure(let error):
                 print(error)

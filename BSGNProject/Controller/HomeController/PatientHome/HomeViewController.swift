@@ -192,6 +192,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         newVC.setupNavigationBar(with: "Chi tiết Khuyến mãi", with: true)
     }
     @objc func didTapBook() {
+        guard Global.patient?.isInAppointment == 0 else {
+            ToastApp.show("Bạn đang trong cuộc hẹn, không thể đặt thêm!")
+            return
+        }
         let bookVC = PatientBookViewController(nibName: "PatientBookViewController", bundle: nil)
         self.navigationController?.pushViewController(bookVC, animated: true)
         bookVC.setupNavigationBar(with: "", with: false)

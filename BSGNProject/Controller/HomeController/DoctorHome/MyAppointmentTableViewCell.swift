@@ -17,6 +17,7 @@ class MyAppointmentTableViewCell: UITableViewCell, SummaryMethod {
     @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet weak var majorLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
     
     var isBooked: String?
@@ -75,13 +76,37 @@ class MyAppointmentTableViewCell: UITableViewCell, SummaryMethod {
             switch result {
             case .success(let patient):
                 self.nameLabel.text = patient.name
-                self.avatarImageView.image = UIImage(named: patient.phoneNumber)
+                self.ageLabel.text = "Ngày sinh: " + patient.dateOfBirth
+                self.addressLabel.text = "Địa chỉ: "+patient.address
+                self.avatarImageView.loadAvatar(url: patient.avatar)
             case .failure(let error):
                 print(error)
             }
         }
     }
     @IBAction func acceptTapped(_ sender: Any) {
+        guard let id = appointment?.id else {
+            ToastApp.show("Không tìm thấy cuộc hẹn")
+            return
+        }
+        // Lấy ID của doctor hiện tại từ Firebase Auth
+        GlobalService.shared.loadAppointmentWithID(appointmentID: id) { result in
+            switch result {
+            case .success(let appointment):
+                self.appointment = appointment
+                if appointment.doctorID == "00" {
+                    self.acceptAppointment()
+                } else {
+                    ToastApp.show("Cuộc hẹn đã được nhận bởi bác sĩ khác")
+                }
+            case .failure(let failure):
+                print(failure.localizedDescription)
+            }
+        }
+        
+    }
+    
+    func acceptAppointment() {
         guard let doctorID = Auth.auth().currentUser?.uid else { return }
         print("")
         // Load thông tin doctor từ Firebase
